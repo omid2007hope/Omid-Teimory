@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
-import CvPage from "./components/Cvpage";
+import CvPage from "./components/CvPage";
 import AboutSection from "./components/About";
 import WorkSection from "./components/Work";
 import ContactSection from "./components/Contact";
