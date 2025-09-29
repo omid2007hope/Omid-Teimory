@@ -1,13 +1,24 @@
+import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import profile from "../assets/profile.jpg";
-import Navbar from "./Navbar";
 
 export default function Header() {
+  const [open, setOpen] = useState(false);
+  const location = useLocation();
+
+  const linkClass = (path) =>
+    `block px-5 py-1.5 text-sm font-medium rounded-md transition ${
+      location.pathname === path
+        ? "bg-white text-blue-900"
+        : "text-white hover:bg-white/10"
+    }`;
+
   return (
-    <header className="w-full fixed top-0 inset-x-0 z-50 bg-gradient-to-r from-blue-900 to-blue-500 text-white border-b-2 border-blue-950 px-4 sm:px-8 lg:px-16 pt-2.5">
-      <div className="max-w-7xl mx-auto flex flex-col lg:flex-row">
-        {/* PHOTO LEFT */}
-        <div className="flex justify-start">
-          <div className="w-40 h-40 md:w-48 md:h-48 rounded-3xl bg-white shadow-md overflow-hidden">
+    <header className="fixed top-0 left-0 w-full z-50 bg-gradient-to-r from-blue-900 to-blue-600 border-b border-blue-950 text-white">
+      {/* Top part */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-4 sm:py-5 flex flex-col md:flex-row md:items-center gap-3">
+        <div className="flex justify-center md:justify-start">
+          <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden bg-white shadow">
             <img
               src={profile}
               alt="Omid Teimory"
@@ -16,57 +27,67 @@ export default function Header() {
           </div>
         </div>
 
-        {/* INFO RIGHT */}
-        <div className="flex-1 lg:pl-8 mt-4 lg:mt-0">
-          <div className="flex flex-col lg:flex-row lg:justify-between">
-            <div>
-              <h1 className="text-3xl font-bold mb-2.5">Omid Teimory</h1>
-              <p className="text-base opacity-90">
-                Frontend Developer | React • Tailwind • CSS • HTML
-              </p>
-            </div>
-            <div className="flex gap-4 mt-4 lg:mt-0 text-sm">
-              <a
-                href="https://github.com/omid2007hope"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline"
-              >
-                GitHub
-              </a>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-6 text-sm mt-4">
-            <p>
-              <span className="font-semibold ">Location:</span> Vienna, Austria
-            </p>
-            <p>
-              <span className="font-semibold ">Date of Birth:</span> 05/02/2007
-            </p>
-            <p>
-              <span className="font-semibold ">Phone:</span> +43 681 815 801 80
-            </p>
-            <p>
-              <span className="font-semibold ">Email:</span>{" "}
-              omidhope2007@gmail.com
-            </p>
-            <p>
-              <span className="font-semibold ">X:</span> @Omid2007hope
-            </p>
-            <p>
-              <span className="font-semibold ">Certifications:</span> IBM
-            </p>
-          </div>
-
-          <p className="italic text-xs opacity-80 mt-6 ">
-            “Treat the word impossible as nothing but motivation — never ever
-            quit.”
+        <div className="flex-1 text-center md:text-left">
+          <h1 className="text-xl sm:text-2xl font-bold">Omid Teimory</h1>
+          <p className="text-xs sm:text-sm opacity-90">
+            Frontend Developer — React • Tailwind • JS • HTML
+          </p>
+          <p className="text-xs sm:text-sm mt-1">
+            <span className="font-semibold">Email:</span> omidhope2007@gmail.com
           </p>
         </div>
       </div>
 
-      <Navbar />
+      {/* Nav */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+        {/* Desktop */}
+        <div className="hidden md:flex justify-center py-2">
+          <div className="inline-flex rounded-md overflow-hidden ring-1 ring-white/20">
+            <Link to="/" className={linkClass("/")}>
+              CV
+            </Link>
+            <Link to="/about" className={linkClass("/about")}>
+              About
+            </Link>
+            <Link to="/work" className={linkClass("/work")}>
+              Work
+            </Link>
+            <Link to="/contact" className={linkClass("/contact")}>
+              Contact
+            </Link>
+          </div>
+        </div>
+
+        {/* Mobile */}
+        <div className="flex md:hidden justify-center py-2">
+          <button
+            onClick={() => setOpen(!open)}
+            className="p-2 rounded hover:bg-white/10"
+            aria-label="Toggle menu"
+          >
+            <div className="w-6 h-0.5 bg-white mb-1" />
+            <div className="w-6 h-0.5 bg-white mb-1" />
+            <div className="w-6 h-0.5 bg-white" />
+          </button>
+        </div>
+
+        {open && (
+          <div className="md:hidden flex flex-col items-center gap-1 pb-3 text-sm font-medium">
+            <Link to="/" onClick={() => setOpen(false)}>
+              CV
+            </Link>
+            <Link to="/about" onClick={() => setOpen(false)}>
+              About
+            </Link>
+            <Link to="/work" onClick={() => setOpen(false)}>
+              Work
+            </Link>
+            <Link to="/contact" onClick={() => setOpen(false)}>
+              Contact
+            </Link>
+          </div>
+        )}
+      </div>
     </header>
   );
 }
