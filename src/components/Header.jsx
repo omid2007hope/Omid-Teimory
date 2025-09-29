@@ -20,9 +20,9 @@ export default function Header() {
         <div className="flex-1 lg:pl-8 mt-4 lg:mt-0">
           <div className="flex flex-col lg:flex-row lg:justify-between">
             <div>
-              <h1 className="text-3xl font-bold">Omid Teimory</h1>
+              <h1 className="text-3xl font-bold mb-2.5">Omid Teimory</h1>
               <p className="text-base opacity-90">
-                Frontend Developer | React • Tailwind • JS
+                Frontend Developer | React • Tailwind • CSS • HTML
               </p>
             </div>
             <div className="flex gap-4 mt-4 lg:mt-0 text-sm">
@@ -34,45 +34,32 @@ export default function Header() {
               >
                 GitHub
               </a>
-              <a href="#" className="underline">
-                Portfolio
-              </a>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-2 text-sm mt-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-6 text-sm mt-4">
             <p>
-              <span className="font-semibold">Age:</span> 18
+              <span className="font-semibold ">Location:</span> Vienna, Austria
             </p>
             <p>
-              <span className="font-semibold">Date of Birth:</span> 05/02/2007
+              <span className="font-semibold ">Date of Birth:</span> 05/02/2007
             </p>
             <p>
-              <span className="font-semibold">Nationality:</span> Iranian
+              <span className="font-semibold ">Phone:</span> +43 681 815 801 80
             </p>
             <p>
-              <span className="font-semibold">Location:</span> Vienna, Austria
-            </p>
-            <p>
-              <span className="font-semibold">Phone:</span> +43 681 815 801 80
-            </p>
-            <p>
-              <span className="font-semibold">Email:</span>{" "}
+              <span className="font-semibold ">Email:</span>{" "}
               omidhope2007@gmail.com
             </p>
             <p>
-              <span className="font-semibold">X:</span> @Omid2007hope
+              <span className="font-semibold ">X:</span> @Omid2007hope
             </p>
             <p>
-              <span className="font-semibold">Certifications:</span> IBM
-            </p>
-            <p>
-              <span className="font-semibold">Skills:</span> HTML • CSS • JS •
-              React • Tailwind
+              <span className="font-semibold ">Certifications:</span> IBM
             </p>
           </div>
 
-          <p className="italic text-xs opacity-80 mt-3">
+          <p className="italic text-xs opacity-80 mt-6 ">
             “Treat the word impossible as nothing but motivation — never ever
             quit.”
           </p>

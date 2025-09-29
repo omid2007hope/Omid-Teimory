@@ -1,33 +1,34 @@
+import Image from "../assets/Image.png";
+import Images from "../assets/Image-2.png";
+import A from "../assets/A.png";
+
 export default function WorkSection() {
   const projects = [
     {
       id: 1,
       title: "Velora — E-commerce (React + Tailwind)",
       desc: "Luxury clothing shop with responsive UI, categories, cart.",
-      tags: ["React", "Tailwind", "Vite"],
-      image:
-        "https://images.unsplash.com/photo-1520975916090-3105956dac38?w=1200&q=80&auto=format&fit=crop",
+      tags: ["React", "Tailwind"],
+      image: Images,
       code: "https://github.com/omid2007hope/Velora",
       live: null, // add live URL if you have one
     },
     {
       id: 2,
-      title: "UI Components Pack",
-      desc: "Reusable cards, navbars, modals styled for Velora.",
+      title: "My Portfolio (Current)",
+      desc: "Personal portfolio site showcasing projects, reusable UI components, and modern design built with React and Tailwind CSS.",
       tags: ["React", "Tailwind"],
-      image:
-        "https://images.unsplash.com/photo-1520975739176-23e58f79b8f3?w=1200&q=80&auto=format&fit=crop",
-      code: "https://github.com/omid2007hope",
+      image: Image,
+      code: "https://github.com/omid2007hope/My-Portfolio",
       live: null,
     },
     {
       id: 3,
-      title: "Training Dashboard",
-      desc: "Fitness & HRV tracker layout with clean charts.",
-      tags: ["React", "JS"],
-      image:
-        "https://images.unsplash.com/photo-1518732714860-b62714ce0b18?w=1200&q=80&auto=format&fit=crop",
+      title: "available soon",
+      desc: "...",
+      tags: ["React", "Tailwind"],
       code: "https://github.com/omid2007hope",
+      image: A,
       live: null,
     },
   ];

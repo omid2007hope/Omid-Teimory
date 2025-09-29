@@ -41,7 +41,7 @@ export default function AboutSection() {
                 </li>
                 <li>
                   <span className="font-semibold">Focus:</span> Front-end
-                  (React, Tailwind, JS)
+                  (React, Tailwind, CSS, HTML)
                 </li>
                 <li>
                   <span className="font-semibold">Since:</span> 2025 (active)
@@ -85,8 +85,7 @@ export default function AboutSection() {
               <p className="mt-2 text-blue-950/90 leading-relaxed">
                 I’m Omid Teimory — a disciplined, purpose-driven developer in
                 Vienna. I train like a soldier and think like a coder. My craft
-                is building clean, responsive UIs with React, Tailwind, and
-                modern JavaScript.
+                is building clean, responsive UIs with React and Tailwind.
               </p>
             </div>
 
@@ -97,7 +96,6 @@ export default function AboutSection() {
                   <li>Master full-stack development</li>
                   <li>Earn a tech job in Austria</li>
                   <li>Secure a U.S. role and relocate</li>
-                  <li>Serve America with honor</li>
                 </ul>
               </div>
 
