@@ -4,7 +4,7 @@ import Image from "../assets/Image.png";
 import Images from "../assets/Image-2.png";
 import A from "../assets/A.png";
 import { ProjectCard } from "../components/ProjectCard";
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 
 export default function Home() {
   const projects = [
@@ -44,15 +44,15 @@ export default function Home() {
 
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8 py-16 lg:py-24 grid lg:grid-cols-2 gap-10 items-center">
           <div>
-            <motion.h1
+            <Motion.h1
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
               className="text-4xl lg:text-5xl font-extrabold tracking-tight"
             >
               Frontend Developer
-            </motion.h1>
-            <motion.p
+            </Motion.h1>
+            <Motion.p
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.08 }}
@@ -61,8 +61,8 @@ export default function Home() {
               I build clean, responsive UIs with{" "}
               <span className="font-semibold">React</span> &{" "}
               <span className="font-semibold">Tailwind</span>.
-            </motion.p>
-            <motion.div
+            </Motion.p>
+            <Motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.16 }}
@@ -82,9 +82,9 @@ export default function Home() {
               >
                 Contact Me
               </a>
-            </motion.div>
+            </Motion.div>
           </div>
-          <motion.div
+          <Motion.div
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.4, delay: 0.12 }}
@@ -98,7 +98,7 @@ export default function Home() {
               />
             </div>
             <div className="absolute -z-10 w-[360px] h-[360px] rounded-full bg-[radial-gradient(ellipse_at_center,_rgba(37,99,235,0.18),_transparent_70%)]" />
-          </motion.div>
+          </Motion.div>
         </div>
       </section>
 

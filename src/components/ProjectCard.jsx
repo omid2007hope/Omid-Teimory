@@ -3,12 +3,12 @@ import {
   ArrowTopRightOnSquareIcon,
   CodeBracketIcon,
 } from "@heroicons/react/24/outline";
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 
 export function ProjectCard({ project, i = 0 }) {
   const { image, title, desc, tags, code, live } = project;
   return (
-    <motion.div
+    <Motion.div
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
@@ -64,6 +64,6 @@ export function ProjectCard({ project, i = 0 }) {
           )}
         </div>
       </div>
-    </motion.div>
+    </Motion.div>
   );
 }

@@ -1,21 +1,21 @@
 // === src/pages/Contact.jsx ===
 import { EnvelopeIcon, PhoneIcon } from "@heroicons/react/24/outline";
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 
 export default function Contact() {
   return (
     <main className="min-h-screen bg-slate-50 text-slate-900">
       <section className="relative mx-auto max-w-7xl px-6 lg:px-8 py-12 lg:py-16">
         <div className="absolute -z-10 -top-28 right-0 w-[520px] h-[520px] rounded-full bg-[radial-gradient(ellipse_at_center,_rgba(59,130,246,0.18),_transparent_70%)]" />
-        <motion.h1
+        <Motion.h1
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           className="text-4xl font-bold mb-8"
         >
           Contact
-        </motion.h1>
+        </Motion.h1>
         <div className="grid lg:grid-cols-2 gap-8">
-          <motion.div
+          <Motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -37,8 +37,8 @@ export default function Contact() {
                 </a>
               </div>
             </div>
-          </motion.div>
-          <motion.div
+          </Motion.div>
+          <Motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -68,7 +68,7 @@ export default function Contact() {
                 Send
               </button>
             </form>
-          </motion.div>
+          </Motion.div>
         </div>
       </section>
     </main>

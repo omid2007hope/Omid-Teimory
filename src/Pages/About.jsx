@@ -4,21 +4,21 @@ import {
   MapPinIcon,
   AtSymbolIcon,
 } from "@heroicons/react/24/outline";
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 
 export default function About() {
   return (
     <main className="min-h-screen bg-slate-50 text-slate-900">
       <section className="relative mx-auto max-w-7xl px-6 lg:px-8 py-12 lg:py-16">
-        <motion.h1
+        <Motion.h1
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           className="text-4xl font-bold mb-8"
         >
           About
-        </motion.h1>
+        </Motion.h1>
         <div className="grid lg:grid-cols-2 gap-10">
-          <motion.div
+          <Motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -53,8 +53,8 @@ export default function About() {
                 </div>
               </li>
             </ul>
-          </motion.div>
-          <motion.div
+          </Motion.div>
+          <Motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -90,7 +90,7 @@ export default function About() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </Motion.div>
         </div>
       </section>
     </main>

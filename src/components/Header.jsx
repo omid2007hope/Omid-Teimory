@@ -62,7 +62,7 @@ export default function Header({ isDark, onToggleTheme }) {
           >
             Hire Me
           </a>
-          <button
+          {/* <button
             aria-label="Toggle theme"
             onClick={() => onToggleTheme?.()}
             className="ml-2 inline-grid place-items-center w-9 h-9 rounded-lg bg-white/10 hover:bg-white/20"
@@ -72,7 +72,7 @@ export default function Header({ isDark, onToggleTheme }) {
             ) : (
               <MoonIcon className="w-5 h-5" />
             )}
-          </button>
+          </button> */}
         </nav>
 
         {/* Mobile */}
@@ -110,12 +110,12 @@ export default function Header({ isDark, onToggleTheme }) {
           >
             Hire Me
           </a>
-          <button
+          {/* <button
             onClick={() => onToggleTheme?.()}
             className="px-4 py-2 rounded-lg text-left text-sm bg-white/10"
           >
             {isDark ? "Light mode" : "Dark mode"}
-          </button>
+          </button> */}
         </div>
       )}
     </header>

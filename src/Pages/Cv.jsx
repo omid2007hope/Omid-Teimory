@@ -1,6 +1,6 @@
 // src/Pages/Cv.jsx
 // Minimal page to present a single CV photo cleanly
-import { motion } from "framer-motion";
+import { motion as Motion } from "framer-motion";
 import cvImage from "../assets/MyCv.jpg"; // keep this if your file name is exactly MyCv.jpg
 
 export default function Cv() {
@@ -12,15 +12,15 @@ export default function Cv() {
           className="absolute -z-10 -top-28 right-0 w-[520px] h-[520px] rounded-full
                         bg-[radial-gradient(ellipse_at_center,_rgba(59,130,246,0.16),_transparent_70%)]"
         />
-        <motion.h1
+        <Motion.h1
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           className="text-4xl font-bold mb-8 text-center"
         >
           My CV
-        </motion.h1>
+        </Motion.h1>
 
-        <motion.div
+        <Motion.div
           initial={{ opacity: 0, scale: 0.985 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.3 }}
@@ -31,7 +31,7 @@ export default function Cv() {
             alt="Omid Teimory — CV"
             className="w-full h-auto block"
           />
-        </motion.div>
+        </Motion.div>
 
         <div className="mt-6 flex items-center justify-center gap-3">
           <a
