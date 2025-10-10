@@ -1,13 +1,20 @@
 // === src/components/ProjectCard.jsx ===
 import {
-  CodeBracketIcon,
   ArrowTopRightOnSquareIcon,
+  CodeBracketIcon,
 } from "@heroicons/react/24/outline";
+import { motion } from "framer-motion";
 
-export function ProjectCard({ project }) {
+export function ProjectCard({ project, i = 0 }) {
   const { image, title, desc, tags, code, live } = project;
   return (
-    <div className="group rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-sm hover:shadow-md transition">
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.4, delay: i * 0.05 }}
+      className="group rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-sm hover:shadow-md transition"
+    >
       <div className="aspect-[4/3] overflow-hidden bg-slate-100">
         <img
           src={image}
@@ -18,16 +25,18 @@ export function ProjectCard({ project }) {
       <div className="p-5">
         <h3 className="font-semibold text-slate-900 text-lg">{title}</h3>
         <p className="mt-1 text-slate-600 text-sm leading-relaxed">{desc}</p>
-        <div className="mt-3 flex flex-wrap gap-2">
-          {tags?.map((t) => (
-            <span
-              key={t}
-              className="px-2.5 py-1 rounded-full text-xs bg-slate-50 border border-slate-200 text-slate-700"
-            >
-              {t}
-            </span>
-          ))}
-        </div>
+        {tags?.length ? (
+          <div className="mt-3 flex flex-wrap gap-2">
+            {tags.map((t) => (
+              <span
+                key={t}
+                className="px-2.5 py-1 rounded-full text-xs bg-slate-50 border border-slate-200 text-slate-700"
+              >
+                {t}
+              </span>
+            ))}
+          </div>
+        ) : null}
         <div className="mt-4 flex gap-3">
           {code && (
             <a
@@ -55,6 +64,6 @@ export function ProjectCard({ project }) {
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
