@@ -10,14 +10,15 @@ import Home from "./Pages/Home";
 import About from "./Pages/About";
 import Contact from "./Pages/Contact";
 import Cv from "./Pages/Cv";
+import ProjectDetail from "./Pages/ProjectDetail"; // <-- NEW
 import { useDarkMode } from "./theme/useDarkMode";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion as Motion } from "framer-motion";
 
 function RoutesWithAnimation() {
   const location = useLocation();
   return (
     <AnimatePresence mode="wait">
-      <motion.div
+      <Motion.div
         key={location.pathname}
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
@@ -29,9 +30,12 @@ function RoutesWithAnimation() {
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/cv" element={<Cv />} />
+          {/* Generic project page driven by demo DB */}
+          <Route path="/projects/:slug" element={<ProjectDetail />} />{" "}
+          {/* <-- NEW */}
           <Route path="*" element={<Home />} />
         </Routes>
-      </motion.div>
+      </Motion.div>
     </AnimatePresence>
   );
 }

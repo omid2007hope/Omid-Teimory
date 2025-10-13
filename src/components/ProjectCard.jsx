@@ -4,9 +4,11 @@ import {
   CodeBracketIcon,
 } from "@heroicons/react/24/outline";
 import { motion as Motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 export function ProjectCard({ project, i = 0 }) {
-  const { image, title, desc, tags, code, live } = project;
+  const { image, title, desc, tags, code, live, slug } = project;
+
   return (
     <Motion.div
       initial={{ opacity: 0, y: 24 }}
@@ -15,16 +17,30 @@ export function ProjectCard({ project, i = 0 }) {
       transition={{ duration: 0.4, delay: i * 0.05 }}
       className="group rounded-2xl overflow-hidden border border-slate-200 bg-white shadow-sm hover:shadow-md transition"
     >
-      <div className="aspect-[4/3] overflow-hidden bg-slate-100">
+      {/* CLICKABLE IMAGE → goes to /projects/:slug */}
+      <Link
+        to={slug}
+        className="block aspect-[4/3] overflow-hidden bg-slate-100"
+      >
         <img
           src={image}
           alt={title}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
-      </div>
+      </Link>
+
       <div className="p-5">
-        <h3 className="font-semibold text-slate-900 text-lg">{title}</h3>
+        {/* CLICKABLE TITLE (optional) */}
+        <Link
+          to={slug}
+          className="font-semibold text-slate-900 text-lg hover:text-blue-600 transition"
+        >
+          {title}
+        </Link>
+
         <p className="mt-1 text-slate-600 text-sm leading-relaxed">{desc}</p>
+
+        {/* Tags */}
         {tags?.length ? (
           <div className="mt-3 flex flex-wrap gap-2">
             {tags.map((t) => (
@@ -37,6 +53,8 @@ export function ProjectCard({ project, i = 0 }) {
             ))}
           </div>
         ) : null}
+
+        {/* Buttons */}
         <div className="mt-4 flex gap-3">
           {code && (
             <a
@@ -48,6 +66,7 @@ export function ProjectCard({ project, i = 0 }) {
               <CodeBracketIcon className="h-4 w-4" /> Code
             </a>
           )}
+
           {live ? (
             <a
               href={live}

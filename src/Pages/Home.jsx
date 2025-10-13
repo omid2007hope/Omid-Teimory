@@ -1,38 +1,17 @@
-// === src/pages/Home.jsx ===
-import profile from "../assets/profile.jpg";
-import Image from "../assets/Image.png";
-import Images from "../assets/Image-2.png";
-import A from "../assets/A.png";
-import { ProjectCard } from "../components/ProjectCard";
+// === src/Pages/Home.jsx ===
+import { Link } from "react-router-dom";
 import { motion as Motion } from "framer-motion";
+import MyPhoto from "../assets/MyPhoto.jpg";
+import { ProjectCard } from "../components/ProjectCard";
+import { projects as dbProjects } from "../data/projects.jsx";
 
 export default function Home() {
-  const projects = [
-    {
-      title: "Velora — E‑commerce",
-      desc: "Luxury clothing shop with responsive UI, categories, and cart.",
-      tags: ["React", "Tailwind"],
-      image: Images,
-      code: "https://github.com/omid2007hope/Velora",
-      live: null,
-    },
-    {
-      title: "Portfolio Website",
-      desc: "Personal portfolio showcasing projects and polished UI components.",
-      tags: ["React", "Tailwind"],
-      image: Image,
-      code: "https://github.com/omid2007hope/My-Portfolio",
-      live: null,
-    },
-    {
-      title: "Admin Dashboard (Coming Soon)",
-      desc: "Next build — UI engineering and performance.",
-      tags: ["TypeScript", "Next.js"],
-      image: A,
-      code: "https://github.com/omid2007hope",
-      live: null,
-    },
-  ];
+  // Adapt DB shape to the card’s expected props
+  const projects = dbProjects.map((p) => ({
+    ...p,
+    image: p.cover, // ProjectCard expects `image`
+    slug: `/projects/${p.slug}`, // build route path
+  }));
 
   return (
     <main className="min-h-screen bg-slate-50 text-slate-900 scroll-smooth">
@@ -62,6 +41,24 @@ export default function Home() {
               <span className="font-semibold">React</span> &{" "}
               <span className="font-semibold">Tailwind</span>.
             </Motion.p>
+
+            {/* Skill Tags */}
+            <Motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
+              className="mt-4 flex flex-wrap gap-2"
+            >
+              {["HTML", "CSS", "React", "Tailwind"].map((skill) => (
+                <span
+                  key={skill}
+                  className="text-xs font-semibold tracking-wide bg-gradient-to-r from-pink-500 to-orange-400 text-white px-3 py-1 rounded-full shadow-sm"
+                >
+                  {skill}
+                </span>
+              ))}
+            </Motion.div>
+
             <Motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -76,14 +73,15 @@ export default function Home() {
               >
                 View GitHub
               </a>
-              <a
-                href="/contact"
+              <Link
+                to="/contact"
                 className="rounded-xl border border-slate-300 bg-white px-5 py-3 font-semibold text-slate-900 hover:bg-slate-50"
               >
                 Contact Me
-              </a>
+              </Link>
             </Motion.div>
           </div>
+
           <Motion.div
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -92,7 +90,7 @@ export default function Home() {
           >
             <div className="relative w-[260px] h-[260px] rounded-full overflow-hidden ring-8 ring-white shadow-xl">
               <img
-                src={profile}
+                src={MyPhoto}
                 alt="Omid Teimory"
                 className="w-full h-full object-cover"
               />
@@ -111,14 +109,17 @@ export default function Home() {
           <h2 className="text-2xl font-bold">Projects</h2>
           <a
             href="https://github.com/omid2007hope"
+            target="_blank"
+            rel="noreferrer"
             className="text-sm font-semibold text-blue-700 hover:underline"
           >
             All on GitHub →
           </a>
         </div>
+
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((p, idx) => (
-            <ProjectCard key={p.title} project={p} i={idx} />
+            <ProjectCard key={p.slug} project={p} i={idx} />
           ))}
         </div>
       </section>
