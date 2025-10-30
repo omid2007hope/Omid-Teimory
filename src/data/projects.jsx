@@ -26,7 +26,7 @@ export const projects = [
     slug: "portfolio",
     title: "Portfolio Website",
     desc: "Personal portfolio showcasing projects and polished UI components.",
-    tags: ["React", "Tailwind", "Framer Motion"],
+    tags: ["React", "Tailwind"],
     cover: portfolioCover,
     images: [portfolio1, portfolio2, portfolio3],
     code: "https://github.com/omid2007hope/My-Portfolio",

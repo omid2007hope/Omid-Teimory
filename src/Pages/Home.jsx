@@ -37,9 +37,8 @@ export default function Home() {
               transition={{ duration: 0.4, delay: 0.08 }}
               className="mt-4 text-lg text-slate-700 max-w-xl"
             >
-              I build clean, responsive UIs with{" "}
-              <span className="font-semibold">React</span> &{" "}
-              <span className="font-semibold">Tailwind</span>.
+              Frontend Web Developer | HTML, CSS, React, Tailwind, Bootstrap |
+              Studying Backend Development (Node.js, Databases)
             </Motion.p>
 
             {/* Skill Tags */}
@@ -49,7 +48,14 @@ export default function Home() {
               transition={{ duration: 0.4, delay: 0.1 }}
               className="mt-4 flex flex-wrap gap-2"
             >
-              {["HTML", "CSS", "React", "Tailwind"].map((skill) => (
+              {[
+                "HTML",
+                "CSS",
+                "Tailwind",
+                "Bootstrap",
+                "Java Script",
+                "React",
+              ].map((skill) => (
                 <span
                   key={skill}
                   className="text-xs font-semibold tracking-wide bg-gradient-to-r from-pink-500 to-orange-400 text-white px-3 py-1 rounded-full shadow-sm"

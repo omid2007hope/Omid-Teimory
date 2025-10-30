@@ -62,13 +62,13 @@ export default function About() {
           >
             <h3 className="text-xl font-bold mb-4">Who I Am</h3>
             <p className="text-slate-700 leading-relaxed">
-              Disciplined and driven developer with a soldier’s mindset and a
-              creator’s precision. I build clean, responsive, and
-              high-performance web interfaces using React and Tailwind. Focused
-              on mastering full-stack development, expanding my portfolio, and
-              earning a tech role in Austria as the next step toward my
-              long-term mission — building, leading, and never backing down from
-              growth.
+              I’m a passionate and disciplined web developer building strong
+              foundations in front-end technologies — React.js, Tailwind CSS,
+              HTML, and CSS. My focus is on creating clean, responsive, and
+              high-performance interfaces that combine functionality with modern
+              design. Right now, I’m mastering the full-stack path — expanding
+              from React and Tailwind into Node.js, databases, and API
+              integration — to build complete, production-ready web apps.
             </p>
             <div className="mt-6 grid md:grid-cols-2 gap-4">
               <div className="rounded-xl bg-slate-50 border border-slate-200 p-4">
