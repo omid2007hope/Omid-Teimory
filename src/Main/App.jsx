@@ -1,20 +1,31 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "../Page/Home";
+
 import Header from "../Navigation/Header";
+
+// Pages
+import Home from "../Page/Home";
 import About from "../Page/About";
 import Contact from "../Page/Contact";
-import Project from "../Page/Project";
+import Projects from "../Page/Projects";
+import Resume from "../Page/Resume";
+import ProjectShowcase from "../Page/ProjectShowcase";
 
 function App() {
   return (
     <BrowserRouter>
       <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/About" element={<About />} />
-        <Route path="/Contact" element={<Contact />} />
-        <Route path="/Project" element={<Project />} />
-      </Routes>
+      <div className="pt-20">
+        {/* Padding so content doesn’t hide behind fixed header */}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/resume" element={<Resume />} />
+          <Route path="/project/:id" element={<ProjectShowcase />} />
+          {/* Dynamic project page for each case study */}
+        </Routes>
+      </div>
     </BrowserRouter>
   );
 }

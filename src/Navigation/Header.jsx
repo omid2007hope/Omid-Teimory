@@ -1,40 +1,54 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function Header() {
+  const location = useLocation();
+
+  const navItems = [
+    { label: "Home", to: "/" },
+    { label: "About", to: "/about" },
+    { label: "Projects", to: "/projects" },
+    { label: "Contact", to: "/contact" },
+  ];
+
   return (
-    <header className="fixed z-50 w-screen h-17 flex flex-row justify-between items-center bg-blue-950 text-blue-50 border-b-2 border-blue-50">
-      <div className="w-1/2 h-full flex flex-row justify-start items-center">
-        <img
-          src="https://tse3.mm.bing.net/th/id/OIP.QdIrCNdF2ZVylABjjes1LAHaGq?cb=ucfimgc2&rs=1&pid=ImgDetMain&o=7&rm=3"
-          alt=""
-          className="w-10 ml-5 opacity-90 rounded-md flex flex-row justify-center items-center border"
-        />
-      </div>
-      <div className="w-full md:w-1/2 lg:w-1/2 h-full flex flex-row justify-evenly md:justify-evenly lg:justify-end items-center">
-        <Link
-          className="w-19.5 md:w-full lg:w-40 h-full flex flex-row justify-center items-center hover:font-bold transition-normal"
-          to="/"
-        >
-          Home
-        </Link>
-        <Link
-          className="w-19.5 md:w-full lg:w-40 h-full flex flex-row justify-center items-center hover:font-bold transition-normal"
-          to="/About"
-        >
-          About
-        </Link>
-        <Link
-          className="w-19.5 md:w-full lg:w-40 h-full flex flex-row justify-center items-center hover:font-bold transition-normal"
-          to="/Contact"
-        >
-          Contact
-        </Link>
-        <Link
-          className="w-19.5 md:w-full lg:w-40 h-full flex flex-row justify-center items-center hover:font-bold transition-normal"
-          to="/Project"
-        >
-          Project
-        </Link>
+    <header className="fixed top-0 left-0 z-50 w-full bg-[#0f172a]/95 backdrop-blur-md border-b border-white/10">
+      <div className="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+        {/* LOGO */}
+        <div className="flex items-center gap-3">
+          <img
+            src="https://tse3.mm.bing.net/th/id/OIP.QdIrCNdF2ZVylABjjes1LAHaGq?cb=ucfimgc2&rs=1&pid=ImgDetMain&o=7&rm=3"
+            alt="logo"
+            className="w-10 h-10 rounded-md border border-white/10"
+          />
+          <span className="text-lg font-bold">Omid Teimory</span>
+        </div>
+
+        {/* NAVIGATION */}
+        <nav className="hidden md:flex items-center gap-10">
+          {navItems.map((item) => (
+            <Link
+              key={item.to}
+              to={item.to}
+              className={`text-sm font-semibold transition ${
+                location.pathname === item.to
+                  ? "text-white"
+                  : "text-white/70 hover:text-white"
+              }`}
+            >
+              {item.label}
+            </Link>
+          ))}
+
+          {/* Call to Action */}
+          <Link
+            to="/contact"
+            className="px-5 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition"
+          >
+            Get In Touch
+          </Link>
+        </nav>
+
+        {/* MOBILE MENU (Optional – can add later) */}
       </div>
     </header>
   );
