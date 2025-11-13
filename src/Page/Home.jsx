@@ -1,83 +1,80 @@
 function Home() {
   return (
-    <div className="w-screen min-h-screen flex flex-col lg:flex-row bg-blue-900 text-blue-50 overflow-hidden pt-15">
-      {/* LEFT – Images */}
-      <div className="w-full lg:w-1/2 flex justify-center items-center p-5 relative">
-        <div className="relative flex justify-center items-center">
-          <img
-            src="https://tse4.mm.bing.net/th/id/OIP.5Qp2V7WQayY9pl6ZcFq_ZgHaHa?cb=ucfimgc2&rs=1&pid=ImgDetMain&o=7&rm=3"
-            className=" z-100 w-48 sm:w-64 md:w-72 lg:w-80 xl:w-96 rounded-2xl border border-blue-950 shadow-xl"
-            alt=""
-          />
+    <div className="w-full min-h-screen bg-[#0f172a] text-white flex flex-col lg:flex-row px-6 lg:px-20 py-20">
+      {/* LEFT – PHOTO STACK */}
+      <div className="w-full lg:w-1/2 flex justify-center items-center mb-16 lg:mb-0">
+        <div className="relative">
+          {/* Back Layers */}
+          <div className="absolute w-64 sm:w-72 md:w-80 lg:w-96 h-80 sm:h-96 bg-blue-700 rounded-2xl -top-4 -left-4 opacity-70"></div>
+          <div className="absolute w-64 sm:w-72 md:w-80 lg:w-96 h-80 sm:h-96 bg-slate-700 rounded-2xl -top-8 -left-8 opacity-50"></div>
 
+          {/* Main Photo */}
           <img
             src="https://tse4.mm.bing.net/th/id/OIP.5Qp2V7WQayY9pl6ZcFq_ZgHaHa?cb=ucfimgc2&rs=1&pid=ImgDetMain&o=7&rm=3"
-            className="z-75 w-40 sm:w-52 md:w-60 lg:w-72 xl:w-80 rounded-2xl border border-blue-950 absolute top-6 left-6 opacity-70 rotate-3"
             alt=""
-          />
-
-          <img
-            src="https://tse4.mm.bing.net/th/id/OIP.5Qp2V7WQayY9pl6ZcFq_ZgHaHa?cb=ucfimgc2&rs=1&pid=ImgDetMain&o=7&rm=3"
-            className="z-50 w-40 sm:w-52 md:w-60 lg:w-72 xl:w-80 rounded-2xl border border-blue-950 absolute top-10 left-10 opacity-40 -rotate-3"
-            alt=""
+            className="relative w-64 sm:w-72 md:w-80 lg:w-96 rounded-2xl border border-white/10 shadow-xl"
           />
         </div>
       </div>
 
-      {/* RIGHT – Content */}
-      <div className="w-full lg:w-1/2 flex flex-col px-6 sm:px-10 py-10 space-y-8">
-        <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold leading-snug">
-          Frontend Web Developer | HTML, CSS, React, Tailwind, Bootstrap, React
-          Router DOM, Redux, GitHub | Studying Backend Development (Node.js,
-          Databases)
+      {/* RIGHT – TEXT CONTENT */}
+      <div className="w-full lg:w-1/2 flex flex-col justify-center space-y-8">
+        {/* TITLE */}
+        <h1 className="text-3xl sm:text-4xl font-extrabold leading-tight">
+          Frontend Developer Crafting Intuitive Web Experiences.
         </h1>
 
-        <p className="text-base sm:text-lg opacity-90 leading-relaxed">
-          I’m a passionate and disciplined web developer focused on creating
-          clean, responsive, high-performance interfaces with React and
-          Tailwind. I'm now expanding into Node.js, databases, and full-stack
-          app development.
+        {/* DESCRIPTION */}
+        <p className="text-white/70 text-lg leading-relaxed max-w-xl">
+          A passionate frontend developer with a focus on building responsive,
+          modern, user-friendly web applications. Specializing in React,
+          Tailwind, and clean UI engineering. Currently mastering backend
+          development with Node.js and databases to build complete full-stack
+          solutions.
         </p>
 
-        {/* SKILLS GRID */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+        {/* SKILLS */}
+        <div className="flex flex-wrap gap-3">
           {[
+            "React",
+            "JavaScript",
+            "Tailwind CSS",
             "HTML",
             "CSS",
-            "Tailwind",
-            "JavaScript",
-            "React",
-            "React Router",
             "Redux",
+            "React Router",
             "GitHub",
           ].map((skill) => (
-            <div
+            <span
               key={skill}
-              className="px-4 py-2 font-semibold bg-white/20 rounded-lg text-center border border-white/10 backdrop-blur-sm"
+              className="px-4 py-2 bg-white/10 rounded-lg border border-white/10 text-sm font-semibold"
             >
               {skill}
-            </div>
+            </span>
           ))}
         </div>
 
-        {/* ACTION BUTTONS */}
-        <div className="flex gap-6 mt-4">
-          <button className="px-6 py-3 border border-white/40 rounded-lg font-bold hover:bg-white/20 transition">
+        {/* BUTTONS */}
+        <div className="flex gap-4 pt-4">
+          <button className="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition">
             View GitHub
           </button>
 
-          <button className="px-6 py-3 border border-white/40 rounded-lg font-bold hover:bg-white/20 transition">
+          <button className="px-6 py-3 bg-white/10 hover:bg-white/20 border border-white/10 rounded-lg font-semibold transition">
             Get In Touch
           </button>
         </div>
 
         {/* SOCIALS */}
-        <div className="flex justify-start gap-10 pt-5">
+        <div className="flex gap-10 pt-10">
           {[{ name: "GitHub" }, { name: "LinkedIn" }, { name: "X" }].map(
             (item) => (
-              <div className="flex flex-col items-center" key={item.name}>
-                <button className="w-16 h-16 border border-white/40 rounded-full hover:bg-white/20 transition"></button>
-                <span className="mt-2 font-bold">{item.name}</span>
+              <div
+                key={item.name}
+                className="flex flex-col items-center space-y-2"
+              >
+                <button className="w-16 h-16 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition" />
+                <span className="text-sm font-semibold">{item.name}</span>
               </div>
             )
           )}
