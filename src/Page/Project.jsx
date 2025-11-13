@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Project() {
   const projects = [
     {
@@ -39,7 +41,7 @@ function Project() {
   ];
 
   return (
-    <div className="w-full min-h-screen bg-[#0f172a] text-white px-6 py-20 flex justify-center pt-25">
+    <div className="w-full min-h-screen bg-[#0f172a] text-white px-6 py-20 flex justify-center">
       <div className="w-full max-w-6xl">
         {/* HEADER */}
         <h1 className="text-3xl sm:text-4xl font-extrabold">
@@ -69,30 +71,32 @@ function Project() {
               key={index}
               className="bg-white/5 border border-white/10 rounded-2xl p-5 hover:bg-white/10 transition"
             >
-              <div className="w-full h-48 rounded-xl overflow-hidden mb  5">
-                <img
-                  src={project.img}
-                  alt={project.title}
-                  className="w-full h-full object-cover"
-                />
-              </div>
+              <Link to="/project/:id">
+                <div className="w-full h-48 rounded-xl overflow-hidden mb  5">
+                  <img
+                    src={project.img}
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
 
-              <h2 className="text-xl font-bold mt-3">{project.title}</h2>
-              <p className="text-white/60 mt-2 text-sm leading-relaxed">
-                {project.desc}
-              </p>
+                <h2 className="text-xl font-bold mt-3">{project.title}</h2>
+                <p className="text-white/60 mt-2 text-sm leading-relaxed">
+                  {project.desc}
+                </p>
 
-              {/* TECH BADGES */}
-              <div className="flex flex-wrap gap-2 mt-4">
-                {project.tech.map((t, i) => (
-                  <span
-                    key={i}
-                    className="px-3 py-1 rounded-lg text-xs bg-white/10 border border-white/10 font-medium"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
+                {/* TECH BADGES */}
+                <div className="flex flex-wrap gap-2 mt-4">
+                  {project.tech.map((t, i) => (
+                    <span
+                      key={i}
+                      className="px-3 py-1 rounded-lg text-xs bg-white/10 border border-white/10 font-medium"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </Link>
 
               {/* BUTTONS */}
               <div className="flex gap-4 mt-5">

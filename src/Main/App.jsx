@@ -6,9 +6,9 @@ import Header from "../Navigation/Header";
 import Home from "../Page/Home";
 import About from "../Page/About";
 import Contact from "../Page/Contact";
-import Projects from "../Page/Projects";
+import Projects from "../Page/Project";
 import Resume from "../Page/Resume";
-import ProjectShowcase from "../Page/ProjectShowcase";
+import ProjectShowcase from "../Component/ProjectShowcase";
 
 function App() {
   return (

@@ -20,7 +20,9 @@ function Header() {
             alt="logo"
             className="w-10 h-10 rounded-md border border-white/10"
           />
-          <span className="text-lg font-bold">Omid Teimory</span>
+          <Link to="/resume">
+            <span className="text-lg font-bold">Omid Teimory</span>
+          </Link>
         </div>
 
         {/* NAVIGATION */}
