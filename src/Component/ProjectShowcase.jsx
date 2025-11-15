@@ -27,7 +27,7 @@ function ProjectShowcase() {
         "GitHub",
       ],
       src: "https://github.com/omid2007hope/Velora",
-      liveDemo: "",
+      liveDemo: "https://velorashop.app",
     },
     {
       id: 1,
