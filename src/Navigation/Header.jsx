@@ -1,7 +1,11 @@
 import { Link, useLocation } from "react-router-dom";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
+import Logo from "../Assets/Image/Logo.png";
 
 function Header() {
   const location = useLocation();
+  const [open, setOpen] = useState(false);
 
   const navItems = [
     { label: "Home", to: "/" },
@@ -14,18 +18,26 @@ function Header() {
     <header className="fixed top-0 left-0 z-50 w-full bg-[#0f172a]/95 backdrop-blur-md border-b border-white/10">
       <div className="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
         {/* LOGO */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-4">
           <img
-            src="https://tse3.mm.bing.net/th/id/OIP.QdIrCNdF2ZVylABjjes1LAHaGq?cb=ucfimgc2&rs=1&pid=ImgDetMain&o=7&rm=3"
+            src={Logo}
             alt="logo"
-            className="w-10 h-10 rounded-md border border-white/10"
+            className="w-14 h-14 rounded-md border border-white"
           />
-          <Link to="/resume">
-            <span className="text-lg font-bold">Omid Teimory</span>
-          </Link>
+
+          <div className="flex flex-col leading-none">
+            <Link to="/resume">
+              <span className="text-xl font-bold text-white">Omid Teimory</span>
+            </Link>
+            <Link to="/resume">
+              <span className="text-sm text-white/70 hover:text-white transition">
+                See my resume
+              </span>
+            </Link>
+          </div>
         </div>
 
-        {/* NAVIGATION */}
+        {/* DESKTOP NAV */}
         <nav className="hidden md:flex items-center gap-10">
           {navItems.map((item) => (
             <Link
@@ -41,17 +53,47 @@ function Header() {
             </Link>
           ))}
 
-          {/* Call to Action */}
           <Link
             to="/contact"
-            className="px-5 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition"
+            className="px-5 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition text-white"
           >
             Get In Touch
           </Link>
         </nav>
 
-        {/* MOBILE MENU (Optional – can add later) */}
+        {/* MOBILE BUTTON */}
+        <button className="md:hidden text-white" onClick={() => setOpen(!open)}>
+          {open ? <X size={28} /> : <Menu size={28} />}
+        </button>
       </div>
+
+      {/* MOBILE DROPDOWN */}
+      {open && (
+        <div className="md:hidden bg-[#0f172a]/95 backdrop-blur-md border-t border-white/10 px-6 py-5 space-y-4">
+          {navItems.map((item) => (
+            <Link
+              key={item.to}
+              to={item.to}
+              onClick={() => setOpen(false)}
+              className={`block text-base font-semibold transition ${
+                location.pathname === item.to
+                  ? "text-white"
+                  : "text-white/70 hover:text-white"
+              }`}
+            >
+              {item.label}
+            </Link>
+          ))}
+
+          <Link
+            to="/contact"
+            onClick={() => setOpen(false)}
+            className="block w-full text-center px-5 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition text-white"
+          >
+            Get In Touch
+          </Link>
+        </div>
+      )}
     </header>
   );
 }

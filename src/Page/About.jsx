@@ -37,9 +37,12 @@ function About() {
               </h1>
             </div>
 
-            <button className="w-full py-4 bg-blue-600 hover:bg-blue-700 rounded-xl font-semibold transition">
+            <a
+              className="w-full py-4 bg-blue-600 hover:bg-blue-700 rounded-xl font-semibold transition flex justify-center items-center"
+              href="/contact"
+            >
               Get In Touch
-            </button>
+            </a>
           </div>
 
           {/* RIGHT COLUMN – MAIN BIO */}
@@ -72,13 +75,13 @@ function About() {
         {/* FOOTER */}
         <div className="mt-20 border-t border-white/10 pt-8 flex flex-col items-center space-y-4">
           <div className="flex gap-10 text-white/70">
-            <a href="#" className="hover:text-white transition">
+            <a href="/" className="hover:text-white transition">
               Home
             </a>
-            <a href="#" className="hover:text-white transition">
+            <a href="/projects" className="hover:text-white transition">
               Projects
             </a>
-            <a href="#" className="hover:text-white transition">
+            <a href="/about" className="hover:text-white transition">
               About
             </a>
           </div>

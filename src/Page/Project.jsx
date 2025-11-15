@@ -1,42 +1,43 @@
 import { Link } from "react-router-dom";
+import { Github, Linkedin, X } from "lucide-react";
+import Portfolio from "../Assets/Image/Portfolio.jpeg";
+import Velora from "../Assets/Image/Velora.jpeg";
 
 function Project() {
   const projects = [
     {
-      title: "E-commerce Platform",
-      desc: "A full-featured online store built with React and Redux for a seamless shopping experience.",
-      img: "https://dummyimage.com/600x400/000/fff",
-      tech: ["React", "TypeScript", "SCSS"],
+      id: 0,
+      title: "Velora || E-commerce",
+      desc: "Front-End E-commerce Website Showcasing All My Skills",
+      img: Velora,
+      tech: [
+        "HTML",
+        "Tailwind CSS",
+        "React",
+        "React Router Dom",
+        "Redux",
+        "React Suite",
+        "GitHub",
+      ],
+      src: "https://github.com/omid2007hope/Velora",
+      liveDemo: "",
     },
     {
-      title: "Data Visualization Dashboard",
-      desc: "An interactive dashboard displaying complex data sets with D3.js and React.",
-      img: "https://dummyimage.com/600x400/000/fff",
-      tech: ["React", "D3.js", "Styled-Components"],
-    },
-    {
-      title: "Personal Blog",
-      desc: "A personal blog platform created with Next.js and Markdown for fast content creation.",
-      img: "https://dummyimage.com/600x400/000/fff",
-      tech: ["Next.js", "Tailwind CSS", "MDX"],
-    },
-    {
-      title: "Task Management App",
-      desc: "A collaborative tool to organize and track team progress using Vue.js.",
-      img: "https://dummyimage.com/600x400/000/fff",
-      tech: ["Vue", "Vuex", "Firebase"],
-    },
-    {
-      title: "Weather Forecast App",
-      desc: "A simple weather application using a public API to fetch real-time data.",
-      img: "https://dummyimage.com/600x400/000/fff",
-      tech: ["JavaScript", "HTML", "CSS"],
-    },
-    {
-      title: "Recipe Finder Website",
-      desc: "A web app to search recipes using available ingredients via an external API.",
-      img: "https://dummyimage.com/600x400/000/fff",
-      tech: ["React", "Context API", "Spoonacular API"],
+      id: 1,
+      title: "Omid Teimory || Portfolio",
+      desc: "My Portfolio",
+      img: Portfolio,
+      tech: [
+        "HTML",
+        "Tailwind CSS",
+        "React",
+        "React Router Dom",
+        "Redux",
+        "React Suite",
+        "GitHub",
+      ],
+      src: "https://github.com/omid2007hope/Omid-Teimory",
+      liveDemo: "https://omidteimory.com",
     },
   ];
 
@@ -54,7 +55,7 @@ function Project() {
 
         {/* FILTER BUTTONS */}
         <div className="flex gap-4 mb-10">
-          {["All", "React", "Vue", "Next.js"].map((filter) => (
+          {["All"].map((filter) => (
             <button
               key={filter}
               className="px-5 py-2 bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 transition font-medium"
@@ -71,8 +72,8 @@ function Project() {
               key={index}
               className="bg-white/5 border border-white/10 rounded-2xl p-5 hover:bg-white/10 transition"
             >
-              <Link to="/project/:id">
-                <div className="w-full h-48 rounded-xl overflow-hidden mb  5">
+              <Link to={`/project/${project.id}`}>
+                <div className="w-full h-48 rounded-xl overflow-hidden mb-5">
                   <img
                     src={project.img}
                     alt={project.title}
@@ -100,12 +101,23 @@ function Project() {
 
               {/* BUTTONS */}
               <div className="flex gap-4 mt-5">
-                <button className="flex-1 px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-sm font-semibold">
+                <a
+                  href={project.liveDemo || "#"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-sm font-semibold text-center"
+                >
                   Live Demo
-                </button>
-                <button className="flex-1 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/10 rounded-lg text-sm font-semibold">
+                </a>
+
+                <a
+                  href={project.src}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/10 rounded-lg text-sm font-semibold text-center"
+                >
                   Source
-                </button>
+                </a>
               </div>
             </div>
           ))}
@@ -114,24 +126,47 @@ function Project() {
         {/* FOOTER */}
         <div className="mt-20 border-t border-white/10 pt-8 flex flex-col items-center space-y-4">
           <div className="flex gap-10 text-white/70">
-            <a href="#" className="hover:text-white transition">
+            <a href="/" className="hover:text-white transition">
               Home
             </a>
-            <a href="#" className="hover:text-white transition">
+            <a href="/projects" className="hover:text-white transition">
               Projects
             </a>
-            <a href="#" className="hover:text-white transition">
+            <a href="/about" className="hover:text-white transition">
               About
             </a>
-            <a href="#" className="hover:text-white transition">
+            <a href="/contact" className="hover:text-white transition">
               Contact
             </a>
           </div>
 
           <div className="flex gap-6 pt-4">
-            <div className="w-10 h-10 bg-white/5 border border-white/10 rounded-full" />
-            <div className="w-10 h-10 bg-white/5 border border-white/10 rounded-full" />
-            <div className="w-10 h-10 bg-white/5 border border-white/10 rounded-full" />
+            <a
+              href="https://github.com/omid2007hope"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 bg-white/5 border border-white/10 rounded-full flex justify-center items-center font-bold hover:bg-white/10 transition"
+            >
+              <Github />
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/omid-teimory-48233638b"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 bg-white/5 border border-white/10 rounded-full flex justify-center items-center font-bold hover:bg-white/10 transition"
+            >
+              <Linkedin />
+            </a>
+
+            <a
+              href="https://x.com/Omid2007hope"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-10 h-10 bg-white/5 border border-white/10 rounded-full flex justify-center items-center font-bold hover:bg-white/10 transition"
+            >
+              <X />
+            </a>
           </div>
 
           <p className="text-white/40 text-sm">
