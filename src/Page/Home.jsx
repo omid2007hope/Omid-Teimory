@@ -29,8 +29,8 @@ function Home() {
         {/* DESCRIPTION */}
         <p className="text-white/70 text-lg leading-relaxed max-w-xl">
           HTML, CSS, Java Script, React, React Suite, Tailwind, Bootstrap, React
-          Router DOM, Redux, GitHub | Studying Backend Development (Node.js,
-          Databases)
+          Router DOM, Redux, GitHub, Figma, Adobe Illustrator, Postman |
+          Studying Backend Development (Node.js, Databases)
         </p>
 
         {/* SKILLS */}
@@ -45,6 +45,9 @@ function Home() {
             "Redux",
             "React Router Dom",
             "GitHub",
+            "Figma",
+            "Adobe Illustrator",
+            "Postman",
           ].map((skill) => (
             <span
               key={skill}
