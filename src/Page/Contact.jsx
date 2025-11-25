@@ -134,6 +134,16 @@ function Contact() {
 
             <div className="flex items-start gap-4">
               <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center">
+                <Mail className="w-5 h-5 text-white" />
+              </div>
+              <div>
+                <p className="text-white/60 text-sm">Phone Number</p>
+                <p className="font-semibold">+43 681-81580180</p>
+              </div>
+            </div>
+
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center">
                 <MapPin className="w-5 h-5 text-white" />
               </div>
               <div>
