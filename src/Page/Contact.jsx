@@ -144,21 +144,11 @@ function Contact() {
 
             <div className="flex items-start gap-4">
               <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center">
-                <Mail className="w-5 h-5 text-white" />
+                <MapPin className="w-5 h-5 text-white" />
               </div>
               <div>
                 <p className="text-white/60 text-sm">Address</p>
                 <p className="font-semibold">EichenStrasse, Wien 1120</p>
-              </div>
-            </div>
-
-            <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center">
-                <MapPin className="w-5 h-5 text-white" />
-              </div>
-              <div>
-                <p className="text-white/60 text-sm">Location</p>
-                <p className="font-semibold">Vienna, Austria</p>
               </div>
             </div>
 
