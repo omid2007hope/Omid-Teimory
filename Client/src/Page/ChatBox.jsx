@@ -27,6 +27,7 @@ function ChatBox({ open, setOpen }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("SUBMIT FIRED", message);
     if (!message.trim()) return;
 
     const userMsg = {
