@@ -157,6 +157,6 @@ app.post("/api/chat", async (req, res) => {
 
 // --------- start server ----------
 const PORT = Number(process.env.PORT) || 3001;
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`Chat API running on port ${PORT}`);
 });
