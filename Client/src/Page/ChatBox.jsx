@@ -50,12 +50,7 @@ function ChatBox({ open, setOpen }) {
     ]);
 
     try {
-      const BASE_URL =
-        window.location.hostname === "localhost"
-          ? "http://localhost:3001"
-          : "http://82.165.139.198:3001";
-
-      const res = await fetch(`${BASE_URL}/api/chat`, {
+      const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: userMsg.text }),
