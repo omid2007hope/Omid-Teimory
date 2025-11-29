@@ -51,13 +51,28 @@ function ChatBox({ open, setOpen }) {
     ]);
 
     try {
-      const res = await fetch("/api/chat", {
+      const endpoint = "/api/chat";
+      console.log("Sending request to", endpoint);
+
+      const res = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: userMsg.text }),
       });
 
-      const data = await res.json();
+      let data;
+      try {
+        data = await res.json();
+      } catch (err) {
+        console.error("Failed to parse JSON from /api/chat", err);
+        throw new Error("Invalid JSON response from server");
+      }
+
+      if (!res.ok) {
+        const errMsg = data?.reply || `Request failed with status ${res.status}`;
+        console.error("Non-200 response from /api/chat:", res.status, errMsg);
+        throw new Error(errMsg);
+      }
 
       setMessages((prev) =>
         prev.map((m) =>
@@ -73,11 +88,19 @@ function ChatBox({ open, setOpen }) {
             : m
         )
       );
-    } catch {
+    } catch (err) {
+      console.error("Chat request failed", err);
       setMessages((prev) =>
         prev.map((m) =>
           m.id === thinkingId
-            ? { ...m, text: "Error: Could not reach server." }
+            ? {
+                ...m,
+                text: `Error: ${err?.message || "Could not reach server."}`,
+                time: new Date().toLocaleTimeString([], {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                }),
+              }
             : m
         )
       );
