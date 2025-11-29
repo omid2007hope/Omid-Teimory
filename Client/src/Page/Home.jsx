@@ -1,6 +1,10 @@
-import { Github, Linkedin, X } from "lucide-react";
+import { Atom, Github, Linkedin, X } from "lucide-react";
 import Me from "../Assets/Image/Me.jpg";
+import { useState } from "react";
+import ChatBox from "./ChatBox";
 function Home() {
+  const [open, setOpen] = useState(false);
+
   return (
     <div className="w-full min-h-screen bg-[#0f172a] text-white flex flex-col lg:flex-row px-6 lg:px-20 py-20">
       {/* LEFT – PHOTO STACK */}
@@ -114,6 +118,13 @@ function Home() {
           ))}
         </div>
       </div>
+      <button
+        onClick={() => setOpen(true)}
+        className="bg-blue-500 px-5 py-5 flex items-center justify-center rounded-full hover:bg-blue-600 border-2 border-blue-950 fixed right-8 bottom-8"
+      >
+        <Atom size={35} />
+      </button>
+      <ChatBox open={open} setOpen={setOpen} />
     </div>
   );
 }
