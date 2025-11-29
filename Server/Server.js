@@ -5,30 +5,32 @@ import dotenv from "dotenv";
 import path from "path";
 import { fileURLToPath } from "url";
 
+// --------- file / env setup ----------
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// Load base .env then override with .env.local (if present)
 dotenv.config({ path: path.join(__dirname, ".env") });
 dotenv.config({ path: path.join(__dirname, ".env.local"), override: true });
 
+// --------- basic validation ----------
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+if (!OPENAI_API_KEY) {
+  console.error("Missing OPENAI_API_KEY in environment. Set it in .env or .env.local");
+  process.exit(1);
+}
+
+// --------- app & client ----------
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: process.env.CORS_ORIGIN || true, // set CORS_ORIGIN in env if you want to restrict
+}));
 
-const client = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY, // must match .env
-});
+const client = new OpenAI({ apiKey: OPENAI_API_KEY });
 
-app.post("/api/chat", async (req, res) => {
-  const userMessage = req.body.message;
-
-  try {
-   const completion = await client.chat.completions.create({
-  model: "gpt-4.1-mini",
-  messages: [
-    {
-      role: "system",
-      content: `You are Omid's AI assistant.
+// Put large system prompt in a constant for readability
+const SYSTEM_PROMPT = `You are Omid's AI assistant.
 Answer ONLY questions related to:
 • Omid Teimory’s background
 • His coding skills
@@ -38,102 +40,123 @@ Answer ONLY questions related to:
 • His freelancing
 • His deployment/server work
 • His career development
-Be clear, direct, and helpful.`,
+Be clear, direct, and helpful.
 
-      About: `
 FULL CAREER OVERVIEW (OMID TEIMORY)
 
-IDENTITY  
-• Omid Teimory — 18 years old — Iranian-born — living in Austria.  
+IDENTITY
+• Omid Teimory — 18 years old — Iranian-born — living in Austria.
 • Self-taught developer building a full-stack career from zero.
 
-CORE ROLE  
+CORE ROLE
 • Frontend Web Developer → aspiring Full-Stack Engineer.
 
-TECH SKILLS  
-• HTML, CSS, JavaScript  
-• React.js, Tailwind CSS  
-• React Router DOM  
-• Redux  
-• Git/GitHub  
-• Learning backend: Node.js, APIs, Databases  
-• Deployment: Ubuntu server, Nginx, SSH, Git workflows  
-• UI/UX Design with Figma  
+TECH SKILLS
+• HTML, CSS, JavaScript
+• React.js, Tailwind CSS
+• React Router DOM
+• Redux
+• Git/GitHub
+• Learning backend: Node.js, APIs, Databases
+• Deployment: Ubuntu server, Nginx, SSH, Git workflows
+• UI/UX Design with Figma
 • Adobe Illustrator (basic logo & branding work)
 
-MAJOR PROJECTS  
-1. Portfolio Website  
-   - React + Tailwind  
-   - Deployed on Ubuntu server (Nginx)  
-   - Hosted in /var/www/portfolio  
+MAJOR PROJECTS
+1. Portfolio Website
+   - React + Tailwind
+   - Deployed on Ubuntu server (Nginx)
+   - Hosted in /var/www/portfolio
    - Regular updates using git pull → npm build → restart nginx.
 
-2. Velora E-commerce Web App  
-   - Full product pages  
-   - Dynamic cart logic (shipping, tax, totals)  
-   - Checkout flow  
-   - Login + Register popups  
-   - Google Sign-In  
-   - LocalStorage user persistence  
-   - Apple Pay UI placeholder  
-   - Tailwind responsive UI  
+2. Velora E-commerce Web App
+   - Full product pages
+   - Dynamic cart logic (shipping, tax, totals)
+   - Checkout flow
+   - Login + Register popups
+   - Google Sign-In
+   - LocalStorage user persistence
+   - Apple Pay UI placeholder
+   - Tailwind responsive UI
    - Advanced frontend UX (forms, modals, toggles, read-only states).
 
-3. Additional projects  
-   - Task Manager app  
-   - Extra portfolio variants  
-   - Custom UI components  
+3. Additional projects
+   - Task Manager app
+   - Extra portfolio variants
+   - Custom UI components
    - Node.js backend learning projects.
 
-SERVER / DEVOPS  
-• Works with Ubuntu 22.04 VPS  
-• Uses Nginx for deployments  
-• Familiar with logs, file directories, restarts  
+SERVER / DEVOPS
+• Works with Ubuntu 22.04 VPS
+• Uses Nginx for deployments
+• Familiar with logs, file directories, restarts
 • Uses commands: git pull, npm install, npm run build, cp builds, systemctl restart nginx.
 
-FREELANCING & PROFESSIONAL PATH  
-• Active on Upwork — building frontend gigs  
-• SEO-driven gig titles (“Responsive Tailwind React Code”, “Portfolio Website”, “Velora E-commerce”)  
+FREELANCING & PROFESSIONAL PATH
+• Active on Upwork — building frontend gigs
+• SEO-driven gig titles (“Responsive Tailwind React Code”, “Portfolio Website”, “Velora E-commerce”)
 • Navigating Austrian KYC:
-  - Steuernummer  
-  - FinanzOnline  
-  - ID Austria  
+  - Steuernummer
+  - FinanzOnline
+  - ID Austria
   - Upwork verification
 • Developing a strong LinkedIn presence.
 
-SOCIAL MEDIA (RELATED TO CAREER)  
-• Strong Twitter/X presence among U.S. veterans, Marines, patriots, and tech-minded followers.  
+SOCIAL MEDIA (RELATED TO CAREER)
+• Strong Twitter/X presence among U.S. veterans, Marines, patriots, and tech-minded followers.
 • Goal: grow to 10,000+ followers.
 
-CURRENT CAREER PHASE  
-• Master React → Tailwind → Node → Full-stack skills  
-• Build 3 major projects  
-• Earn Google, LinkedIn, and FCC certifications  
-• Get first Austrian developer job  
+CURRENT CAREER PHASE
+• Master React → Tailwind → Node → Full-stack skills
+• Build 3 major projects
+• Earn Google, LinkedIn, and FCC certifications
+• Get first Austrian developer job
 • Obtain RWR work permit (salary not mentioned in career materials)
 
-LONG-TERM PLAN  
-Phase 1 (2025–2026): Become a full-stack developer in Austria, build portfolio, get job.  
-Phase 2 (2026–2027): Gain 1–2 years experience, strong GitHub/LinkedIn, save €1k/mo.  
-Phase 3 (2027–2029): Get U.S. job sponsorship (H-1B, L-1, EB-3, EB-2 NIW).  
-Phase 4 (2028–2030): Move to U.S. → Join U.S. Marine Corps.  
-Phase 5: Gain U.S. citizenship through service.  
+LONG-TERM PLAN
+Phase 1 (2025–2026): Become a full-stack developer in Austria, build portfolio, get job.
+Phase 2 (2026–2027): Gain 1–2 years experience, strong GitHub/LinkedIn, save €1k/mo.
+Phase 3 (2027–2029): Get U.S. job sponsorship (H-1B, L-1, EB-3, EB-2 NIW).
+Phase 4 (2028–2030): Move to U.S. → Join U.S. Marine Corps.
+Phase 5: Gain U.S. citizenship through service.
 Phase 6: Attempt entry into Special Operations (MARSOC / SEALs / Rangers).
 
-SUMMARY  
+SUMMARY
 Omid is a rising full-stack developer specializing in React + Tailwind + modern frontend engineering, building a full professional portfolio, deploying on Linux servers, growing a freelancing presence, and systematically preparing for a tech career in Austria and then the United States.
-`
-    },
-    { role: "user", content: userMessage },
-  ],
-});
+`;
 
+// --------- routes ----------
+app.post("/api/chat", async (req, res) => {
+  const userMessage = (req.body && req.body.message) || "";
+  if (!userMessage.trim()) {
+    return res.status(400).json({ reply: "Missing or empty 'message' in request body." });
+  }
 
-    res.json({ reply: completion.choices[0].message.content });
+  try {
+    const completion = await client.chat.completions.create({
+      model: "gpt-4.1-mini",
+      messages: [
+        { role: "system", content: SYSTEM_PROMPT },
+        { role: "user", content: userMessage },
+      ],
+      // optional: tune these as needed
+      max_tokens: 800,
+      temperature: 0.2,
+    });
+
+    const reply =
+      completion?.choices?.[0]?.message?.content ??
+      "No reply from OpenAI.";
+
+    return res.json({ reply });
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ reply: "Server error." });
+    console.error("OpenAI error:", err?.message ?? err);
+    return res.status(500).json({ reply: "Server error." });
   }
 });
 
-app.listen(3001, () => console.log("Chat API running on port 3001"));
+// --------- start server ----------
+const PORT = Number(process.env.PORT) || 3001;
+app.listen(PORT, () => {
+  console.log(`Chat API running on port ${PORT}`);
+});
