@@ -21,7 +21,7 @@ function Header() {
         <div className="flex items-center gap-4">
           <img
             src={Logo}
-            alt="logo"
+            alt="Omid Teimory logo"
             className="w-14 h-14 rounded-md border border-white"
           />
 
@@ -52,6 +52,9 @@ function Header() {
               {item.label}
             </Link>
           ))}
+          <span className="px-3 py-1 text-xs font-semibold bg-green-600/20 border border-green-500/30 text-green-100 rounded-full">
+            Open to work
+          </span>
 
           <Link
             to="/contact"
@@ -84,6 +87,10 @@ function Header() {
               {item.label}
             </Link>
           ))}
+
+          <div className="px-3 py-2 bg-green-600/20 border border-green-500/30 text-green-100 rounded-lg text-sm font-semibold">
+            Open to work
+          </div>
 
           <Link
             to="/contact"
