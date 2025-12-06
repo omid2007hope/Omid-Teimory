@@ -68,6 +68,11 @@ function ProjectShowcase() {
         type="article"
         url={`https://omidteimory.com/project/${project.id}`}
         image={project.img}
+        breadcrumbItems={[
+          { name: "Home", url: "/" },
+          { name: "Projects", url: "/projects" },
+          { name: project.title, url: `/project/${project.id}` },
+        ]}
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "CreativeWork",

@@ -8,6 +8,10 @@ function About() {
         description="Learn about frontend developer Omid Teimory in Vienna. Open to work and collaborations on modern React, Tailwind, and JavaScript projects."
         keywords="About Omid Teimory, frontend developer Vienna, open to work, React developer bio"
         url="https://omidteimory.com/about"
+        breadcrumbItems={[
+          { name: "Home", url: "/" },
+          { name: "About", url: "/about" },
+        ]}
       />
       <div className="w-full min-h-screen bg-[#0f172a] text-white px-6 py-16 flex justify-center">
         <div className="w-full max-w-6xl">

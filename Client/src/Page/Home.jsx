@@ -42,6 +42,7 @@ function Home() {
         keywords="Frontend developer in Vienna, React developer portfolio, Tailwind CSS engineer, open to work, Omid Teimory"
         image="/og-image.png"
         url="https://omidteimory.com/"
+        breadcrumbItems={[{ name: "Home", url: "/" }]}
       />
       <div className="w-full min-h-screen bg-[#0f172a] text-white">
         <div className="w-full max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-14 lg:gap-20 px-6 lg:px-8 py-16 lg:py-24">

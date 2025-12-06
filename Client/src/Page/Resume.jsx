@@ -12,6 +12,11 @@ function Resume() {
         type="article"
         url="https://omidteimory.com/resume"
         publishedTime="2024-12-01"
+        modifiedTime="2025-12-06"
+        breadcrumbItems={[
+          { name: "Home", url: "/" },
+          { name: "Resume", url: "/resume" },
+        ]}
       />
       <div className="w-full min-h-screen bg-[#0f172a] text-white px-6 py-16 flex justify-center">
         <div className="w-full max-w-7xl flex flex-col lg:flex-row gap-12">
@@ -52,8 +57,8 @@ function Resume() {
                 </div>
 
                 <div>
-                  <h3 className="font-bold text-lg">Frontend Developer — Freelancer</h3>
-                  <p className="text-white/60 text-sm">2024 — Present — Vienna, Austria</p>
+              <h3 className="font-bold text-lg">Frontend Developer - Freelancer</h3>
+              <p className="text-white/60 text-sm">2024 - Present - Vienna, Austria</p>
 
                   <ul className="list-disc ml-6 mt-2 space-y-1 text-white/80">
                     <li>
@@ -69,7 +74,7 @@ function Resume() {
                       charts, gradient systems, and data-driven UI elements.
                     </li>
                     <li>
-                      Designed and built "Velora" — a full front-end e-commerce system with product
+                      Designed and built "Velora" - a full front-end e-commerce system with product
                       arrays, detail pages, selectors, dynamic logic, and responsive UI.
                     </li>
                     <li>
@@ -90,8 +95,8 @@ function Resume() {
                 </div>
 
                 <div>
-                  <h3 className="font-bold text-lg">Web Development Student — Independent</h3>
-                  <p className="text-white/60 text-sm">2023 — Present</p>
+              <h3 className="font-bold text-lg">Web Development Student - Independent</h3>
+              <p className="text-white/60 text-sm">2023 - Present</p>
 
                   <ul className="list-disc ml-6 mt-2 space-y-1 text-white/80">
                     <li>
@@ -125,7 +130,7 @@ function Resume() {
 
                 <div>
                   <h3 className="font-bold text-lg">Full-Stack Web Development</h3>
-                  <p className="text-white/60 text-sm">Self-Taught — 2023 — Present</p>
+                  <p className="text-white/60 text-sm">Self-Taught - 2023 - Present</p>
 
                   <p className="text-white/80 mt-2 max-w-xl">
                     Studying modern web technologies including HTML, CSS, JavaScript, React,

@@ -7,6 +7,10 @@
       content="width=device-width, initial-scale=1, viewport-fit=cover"
     />
     <title>Omid Teimory | Frontend Web Developer Portfolio</title>
+    <meta name="application-name" content="Omid Teimory Portfolio" />
+    <meta name="apple-mobile-web-app-title" content="Omid Teimory" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="format-detection" content="telephone=no" />
     <meta
       name="description"
       content="Portfolio of Omid Teimory, frontend web developer building fast, accessible React experiences. Open to work on freelance and full-time opportunities."
@@ -17,8 +21,11 @@
     />
     <meta name="author" content="Omid Teimory" />
     <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
     <meta name="theme-color" content="#0f172a" />
     <link rel="canonical" href="https://omidteimory.com/" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
     <link rel="icon" type="image/png" href="/favicon.png" />
     <meta property="og:type" content="website" />
     <meta
@@ -30,6 +37,8 @@
       content="See projects, resume, and contact details for frontend developer Omid Teimory. Open to work and collaborations."
     />
     <meta property="og:url" content="https://omidteimory.com/" />
+    <meta property="og:site_name" content="Omid Teimory Portfolio" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:image" content="https://omidteimory.com/og-image.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta
@@ -44,6 +53,54 @@
       name="twitter:image"
       content="https://omidteimory.com/og-image.png"
     />
+    <meta name="twitter:site" content="@Omid2007hope" />
+    <meta name="twitter:creator" content="@Omid2007hope" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Person",
+            "name": "Omid Teimory",
+            "jobTitle": "Frontend Web Developer",
+            "url": "https://omidteimory.com",
+            "image": "https://omidteimory.com/og-image.png",
+            "sameAs": [
+              "https://github.com/omid2007hope",
+              "https://www.linkedin.com/in/omid-teimory-48233638b/",
+              "https://x.com/Omid2007hope"
+            ],
+            "email": "mailto:omidhope2007@gmail.com",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Vienna",
+              "addressCountry": "Austria"
+            }
+          },
+          {
+            "@type": "WebSite",
+            "name": "Omid Teimory Portfolio",
+            "url": "https://omidteimory.com",
+            "inLanguage": "en-US",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://omidteimory.com/?s={search_term_string}",
+              "query-input": "required name=search_term_string"
+            }
+          },
+          {
+            "@type": "WebPage",
+            "name": "Omid Teimory | Frontend Web Developer Portfolio",
+            "url": "https://omidteimory.com/",
+            "description": "Portfolio of Omid Teimory, frontend web developer building fast, accessible React experiences.",
+            "inLanguage": "en-US",
+            "isPartOf": {
+              "@id": "https://omidteimory.com"
+            }
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

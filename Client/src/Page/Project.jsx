@@ -49,6 +49,10 @@ function Project() {
         description="Selected React and Tailwind projects by Omid Teimory, showcasing e-commerce, portfolio design, and UI engineering. Open to work."
         keywords="React projects, Tailwind case studies, Omid Teimory portfolio, frontend projects, open to work"
         url="https://omidteimory.com/projects"
+        breadcrumbItems={[
+          { name: "Home", url: "/" },
+          { name: "Projects", url: "/projects" },
+        ]}
       />
       <div className="w-full min-h-screen bg-[#0f172a] text-white px-6 py-20 flex justify-center">
         <div className="w-full max-w-6xl">

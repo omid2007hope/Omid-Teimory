@@ -53,6 +53,10 @@ function Contact() {
         description="Contact frontend developer Omid Teimory. Open to work and collaborations. Reach out for freelance projects, product builds, or full-time roles."
         keywords="Contact Omid Teimory, frontend freelance contact, React developer email, open to work"
         url="https://omidteimory.com/contact"
+        breadcrumbItems={[
+          { name: "Home", url: "/" },
+          { name: "Contact", url: "/contact" },
+        ]}
       />
       <div className="w-full min-h-screen bg-[#0f172a] text-white px-6 py-20 flex justify-center">
         <div className="w-full max-w-6xl">

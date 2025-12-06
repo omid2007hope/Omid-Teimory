@@ -189,7 +189,7 @@ function ChatBox({ open, setOpen }) {
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               onKeyDown={onKeyDown}
-              placeholder="Type a message…"
+              placeholder="Type a message..."
               className="flex-1 resize-none text-black px-3 py-2 min-h-[36px] max-h-28 rounded-lg border border-blue-300 focus:ring-2 focus:ring-blue-400 bg-white text-sm"
             />
 
