@@ -7,6 +7,7 @@ import Portfolio2 from "../Assets/Image/Portfolio2.png";
 import Velora from "../Assets/Image/Velora.jpeg";
 import Velora1 from "../Assets/Image/Velora1.png";
 import Velora2 from "../Assets/Image/Velora2.png";
+import VCCE from "../Assets/Image/VCCE.jpeg";
 
 function ProjectShowcase() {
   const { id } = useParams();
@@ -30,7 +31,7 @@ function ProjectShowcase() {
       ],
       src: "https://github.com/omid2007hope/Velora",
       liveDemo: "https://velorashop.app",
-      duration: "4 Weeks",
+      duration: "8 Weeks",
     },
     {
       id: 1,
@@ -49,7 +50,26 @@ function ProjectShowcase() {
       ],
       src: "https://github.com/omid2007hope/Omid-Teimory",
       liveDemo: "https://omidteimory.com",
-      duration: "3 Weeks",
+      duration: "2 Weeks",
+    },
+    {
+      id: 2,
+      title: "VCCE",
+      desc: "Virtual Cloud Coding Environment",
+      img: VCCE,
+      showCase: [],
+      tech: [
+        "HTML",
+        "Tailwind CSS",
+        "React",
+        "React Router DOM",
+        "Redux",
+        "React Suite",
+        "GitHub",
+      ],
+      src: "https://github.com/omid2007hope/Real-VCCE-Version-1",
+      liveDemo: "",
+      duration: "In Progress",
     },
   ];
 
@@ -64,7 +84,9 @@ function ProjectShowcase() {
       <SEO
         title={`${project.title} Case Study`}
         description={project.desc}
-        keywords={`${project.title}, ${project.tech.join(", ")}, Omid Teimory project, frontend case study`}
+        keywords={`${project.title}, ${project.tech.join(
+          ", "
+        )}, Omid Teimory project, frontend case study`}
         type="article"
         url={`https://omidteimory.com/project/${project.id}`}
         image={project.img}
@@ -89,9 +111,13 @@ function ProjectShowcase() {
       />
       <div className="w-full min-h-screen bg-[#0f172a] text-white px-6 py-16 flex justify-center">
         <div className="w-full max-w-7xl">
-          <h1 className="text-4xl font-extrabold leading-snug">{project.title}</h1>
+          <h1 className="text-4xl font-extrabold leading-snug">
+            {project.title}
+          </h1>
 
-          <p className="text-white/70 text-lg mt-2 mb-12 max-w-3xl">{project.desc}</p>
+          <p className="text-white/70 text-lg mt-2 mb-12 max-w-3xl">
+            {project.desc}
+          </p>
 
           <div className="w-full h-96 rounded-2xl overflow-hidden mb-12">
             <img
@@ -130,7 +156,9 @@ function ProjectShowcase() {
                       <Sparkle />
                     </div>
                     <div>
-                      <p className="text-white/60 text-xs uppercase font-medium">Role</p>
+                      <p className="text-white/60 text-xs uppercase font-medium">
+                        Role
+                      </p>
                       <p className="font-semibold">Lead Frontend Developer</p>
                     </div>
                   </div>
@@ -140,7 +168,9 @@ function ProjectShowcase() {
                       <Sparkle />
                     </div>
                     <div>
-                      <p className="text-white/60 text-xs uppercase font-medium">Duration</p>
+                      <p className="text-white/60 text-xs uppercase font-medium">
+                        Duration
+                      </p>
                       <p className="font-semibold">{project.duration}</p>
                     </div>
                   </div>
@@ -169,19 +199,22 @@ function ProjectShowcase() {
                 <h2 className="text-2xl font-bold mb-4">Project Overview</h2>
 
                 <p className="text-white/80 leading-relaxed">
-                  This project was built with performance, modern UI, and responsive design as top
-                  priorities. It demonstrates my capability to design, structure, and implement a
-                  complete frontend application using industry-level tools.
+                  This project was built with performance, modern UI, and
+                  responsive design as top priorities. It demonstrates my
+                  capability to design, structure, and implement a complete
+                  frontend application using industry-level tools.
                 </p>
               </section>
 
               <section>
-                <h2 className="text-2xl font-bold mb-4">Challenges & Solutions</h2>
+                <h2 className="text-2xl font-bold mb-4">
+                  Challenges & Solutions
+                </h2>
 
                 <p className="text-white/80 leading-relaxed">
-                  The main challenge was crafting a visually polished UI while maintaining
-                  lightweight performance. Each screen is optimized for clarity, motion balance, and
-                  strong contrast.
+                  The main challenge was crafting a visually polished UI while
+                  maintaining lightweight performance. Each screen is optimized
+                  for clarity, motion balance, and strong contrast.
                 </p>
 
                 <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
@@ -197,13 +230,14 @@ function ProjectShowcase() {
 
                 <div className="p-6 bg-blue-700/20 border border-blue-600/30 rounded-xl mt-6">
                   <p className="font-semibold text-blue-300 leading-relaxed">
-                    "Building clean UI components with Tailwind ensured speed and full consistency
-                    across the project."
+                    "Building clean UI components with Tailwind ensured speed
+                    and full consistency across the project."
                   </p>
                 </div>
 
                 <p className="text-white/80 leading-relaxed mt-6">
-                  Additional improvements included modular component design and reusable logic.
+                  Additional improvements included modular component design and
+                  reusable logic.
                 </p>
               </section>
             </div>

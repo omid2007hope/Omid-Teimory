@@ -3,6 +3,7 @@ import { Github, Linkedin, X } from "lucide-react";
 import Portfolio from "../Assets/Image/Portfolio.jpeg";
 import Velora from "../Assets/Image/Velora.jpeg";
 import SEO from "../Component/SEO";
+import VCCE from "../Assets/Image/VCCE.jpeg";
 
 function Project() {
   const projects = [
@@ -39,6 +40,23 @@ function Project() {
       ],
       src: "https://github.com/omid2007hope/Omid-Teimory",
       liveDemo: "https://omidteimory.com",
+    },
+    {
+      id: 2,
+      title: "VCCE",
+      desc: "Virtual Cloud Coding Environment (VCCE) is a web-based IDE that allows users to code in the cloud",
+      img: VCCE,
+      tech: [
+        "HTML",
+        "Tailwind CSS",
+        "React",
+        "React Router DOM",
+        "Redux",
+        "React Suite",
+        "GitHub",
+      ],
+      src: "https://github.com/omid2007hope/Real-VCCE-Version-1",
+      liveDemo: "",
     },
   ];
 
