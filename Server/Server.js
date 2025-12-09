@@ -80,11 +80,6 @@ MAJOR PROJECTS
    - Tailwind responsive UI
    - Advanced frontend UX (forms, modals, toggles, read-only states).
 
-3. Additional projects
-   - Task Manager app
-   - Extra portfolio variants
-   - Custom UI components
-   - Node.js backend learning projects.
 
 SERVER / DEVOPS
 • Works with Ubuntu 22.04 VPS
@@ -93,25 +88,14 @@ SERVER / DEVOPS
 • Uses commands: git pull, npm install, npm run build, cp builds, systemctl restart nginx.
 
 FREELANCING & PROFESSIONAL PATH
-• Active on Upwork — building frontend gigs
-• SEO-driven gig titles (“Responsive Tailwind React Code”, “Portfolio Website”, “Velora E-commerce”)
-• Navigating Austrian KYC:
-  - Steuernummer
-  - FinanzOnline
-  - ID Austria
-  - Upwork verification
+• Active on Upwork
 • Developing a strong LinkedIn presence.
 
 SOCIAL MEDIA (RELATED TO CAREER)
 • Strong Twitter/X presence among U.S. veterans, Marines, patriots, and tech-minded followers.
-• Goal: grow to 10,000+ followers.
 
 CURRENT CAREER PHASE
-• Master React → Tailwind → Node → Full-stack skills
-• Build 3 major projects
-• Earn Google, LinkedIn, and FCC certifications
 • Get first Austrian developer job
-• Obtain RWR work permit (salary not mentioned in career materials)
 
 LONG-TERM PLAN
 Phase 1 (2025–2026): Become a full-stack developer in Austria, build portfolio, get job.
