@@ -2,6 +2,12 @@ import { useState } from "react";
 import { Github, Linkedin, X, Mail, MapPin } from "lucide-react";
 import SEO from "../Component/SEO";
 
+import emailjs from "@emailjs/browser";
+
+const SERVICE_ID = "service_omid";
+const TEMPLATE_ID = "template_omid";
+const PUBLIC_KEY = "jM0uvw5dlLea-N5IA";
+
 function Contact() {
   const [form, setForm] = useState({
     name: "",
@@ -24,27 +30,28 @@ function Contact() {
       return;
     }
 
-    setStatus(null);
     setIsSubmitting(true);
+    setStatus(null);
 
     try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
+      await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          user_name: form.name,
+          user_email: form.email,
+          user_subject: form.subject,
+          user_message: form.message,
+        },
+        PUBLIC_KEY
+      );
 
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok) {
-        throw new Error(data?.message || "Failed to send message.");
-      }
-
-      setStatus({ type: "success", message: data?.message || "Message sent successfully." });
+      setStatus({ type: "success", message: "Message sent successfully." });
       setForm({ name: "", email: "", subject: "", message: "" });
     } catch (err) {
       setStatus({
         type: "error",
-        message: err?.message || "Failed to send message. Please try again.",
+        message: "Failed to send message. Please try again.",
       });
     } finally {
       setIsSubmitting(false);
@@ -148,7 +155,9 @@ function Contact() {
               {status && (
                 <p
                   className={`text-sm font-semibold ${
-                    status.type === "success" ? "text-green-400" : "text-red-400"
+                    status.type === "success"
+                      ? "text-green-400"
+                      : "text-red-400"
                   }`}
                 >
                   {status.message}
