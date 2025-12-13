@@ -1,4 +1,4 @@
-import {
+﻿import {
   Book,
   Globe,
   Mail,
@@ -36,6 +36,10 @@ function Resume() {
               <img
                 src={Me}
                 alt="Omid Teimory headshot"
+                width="64"
+                height="64"
+                loading="lazy"
+                decoding="async"
                 className="w-16 h-16 rounded-full bg-white/20 border border-white/10"
               />
               <div>
@@ -115,9 +119,9 @@ function Resume() {
                 Languages
               </h3>
               <ul className="mt-3 space-y-1 text-white/80 text-sm">
-                <li>English – Fluent</li>
-                <li>German – Basic</li>
-                <li>Persian – Native</li>
+                <li>English - Fluent</li>
+                <li>German - Basic</li>
+                <li>Persian - Native</li>
               </ul>
             </div>
 
@@ -141,7 +145,7 @@ function Resume() {
                 <div className="flex items-start gap-2">
                   <Award size={16} className="mt-1" />
                   <div>
-                    <p className="font-semibold">ÖSD Zertifikat A1 – German</p>
+                    <p className="font-semibold">Ã–SD Zertifikat A1 â€“ German</p>
                     <p className="text-xs opacity-70">Score: 94/100</p>
                   </div>
                 </div>
@@ -156,6 +160,11 @@ function Resume() {
               <img
                 src={Me}
                 alt="Omid Teimory"
+                width="160"
+                height="160"
+                loading="eager"
+                fetchpriority="high"
+                decoding="async"
                 className="w-40 h-40 rounded-2xl object-cover shadow-lg border border-white/10"
               />
 
@@ -179,7 +188,6 @@ function Resume() {
             <section>
               <h2 className="text-2xl font-bold mb-6">Experience</h2>
 
-              {/* Freelancer */}
               <div className="flex gap-6 mb-10">
                 <div className="w-12 h-12 bg-blue-600 rounded-xl flex justify-center items-center">
                   <Book />
@@ -187,10 +195,10 @@ function Resume() {
 
                 <div>
                   <h3 className="font-bold text-lg">
-                    Frontend Developer – Freelancer
+                    Frontend Developer - Freelancer
                   </h3>
                   <p className="text-white/60 text-sm">
-                    2024 – Present • Vienna, Austria
+                    2024 - Present — Vienna, Austria
                   </p>
 
                   <ul className="list-disc ml-6 mt-3 space-y-1 text-white/80">
@@ -207,7 +215,7 @@ function Resume() {
                       data-driven UI components.
                     </li>
                     <li>
-                      Created <strong>Velora</strong> — a complete e-commerce
+                      Created <strong>Velora</strong> - a complete e-commerce
                       front-end with product arrays, selectors, detail pages,
                       cart flows, responsive grids, and dynamic UI logic.
                     </li>
@@ -223,7 +231,6 @@ function Resume() {
                 </div>
               </div>
 
-              {/* Student */}
               <div className="flex gap-6">
                 <div className="w-12 h-12 bg-blue-600 rounded-xl flex justify-center items-center">
                   <Book />
@@ -231,9 +238,9 @@ function Resume() {
 
                 <div>
                   <h3 className="font-bold text-lg">
-                    Web Development Student – Independent
+                    Web Development Student - Independent
                   </h3>
-                  <p className="text-white/60 text-sm">2023 – Present</p>
+                  <p className="text-white/60 text-sm">2023 - Present</p>
 
                   <ul className="list-disc ml-6 mt-3 space-y-1 text-white/80">
                     <li>
@@ -242,7 +249,7 @@ function Resume() {
                     </li>
                     <li>
                       Building production-level UIs including portfolios, task
-                      managers, finance tools.
+                      managers, and finance tools.
                     </li>
                     <li>
                       Practicing advanced UI/UX design, alignment precision,
@@ -261,7 +268,6 @@ function Resume() {
             <section>
               <h2 className="text-2xl font-bold mb-6">Education</h2>
 
-              {/* Full Stack */}
               <div className="flex gap-6 mb-10">
                 <div className="w-12 h-12 bg-blue-600 rounded-xl flex justify-center items-center">
                   <Book />
@@ -272,7 +278,7 @@ function Resume() {
                     Full-Stack Web Development
                   </h3>
                   <p className="text-white/60 text-sm">
-                    2023 – Present • Self-Taught
+                    2023 - Present — Self-Taught
                   </p>
 
                   <p className="text-white/80 mt-2 max-w-2xl">
@@ -284,7 +290,6 @@ function Resume() {
                 </div>
               </div>
 
-              {/* Schools */}
               <div className="flex gap-6">
                 <div className="w-12 h-12 bg-blue-600 rounded-xl flex justify-center items-center">
                   <Book />
@@ -293,16 +298,15 @@ function Resume() {
                 <div>
                   <h3 className="font-bold text-lg">Educational Background</h3>
                   <ul className="text-white/80 space-y-1 mt-2 text-sm">
-                    <li>Full-Stack Program (Online) – 2025–Present</li>
-                    <li>HAK Schule, Austria – 2025</li>
-                    <li>Infenium Schule, Austria – 2024–2025</li>
-                    <li>High School, Iran – 2019–2024</li>
-                    <li>Elementary School, Iran – 2013–2019</li>
+                    <li>Full-Stack Program (Online) - 2025-Present</li>
+                    <li>HAK Schule, Austria - 2025</li>
+                    <li>Infenium Schule, Austria - 2024-2025</li>
+                    <li>High School, Iran - 2019-2024</li>
+                    <li>Elementary School, Iran - 2013-2019</li>
                   </ul>
                 </div>
               </div>
             </section>
-
             {/* SKILLS */}
             <section>
               <h2 className="text-2xl font-bold mb-6">Skills</h2>
@@ -405,3 +409,8 @@ function SkillGroup({ title, items }) {
 }
 
 export default Resume;
+
+
+
+
+

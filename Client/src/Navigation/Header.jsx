@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import Logo from "../Assets/Image/Logo.png";
+import Logo from "../Assets/Image/Logo.svg";
 
 function Header() {
   const location = useLocation();
@@ -22,7 +22,10 @@ function Header() {
           <img
             src={Logo}
             alt="Omid Teimory logo"
+            width="56"
+            height="56"
             className="w-14 h-14 rounded-md border border-white"
+            fetchPriority="high"
           />
 
           <div className="flex flex-col leading-none">
@@ -65,7 +68,13 @@ function Header() {
         </nav>
 
         {/* MOBILE BUTTON */}
-        <button className="md:hidden text-white" onClick={() => setOpen(!open)}>
+        <button
+          type="button"
+          className="md:hidden text-white p-3 -mr-2"
+          aria-expanded={open}
+          aria-label={open ? "Close navigation menu" : "Open navigation menu"}
+          onClick={() => setOpen(!open)}
+        >
           {open ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>

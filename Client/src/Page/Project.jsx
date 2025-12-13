@@ -104,6 +104,10 @@ function Project() {
                     <img
                       src={project.img}
                       alt={project.title}
+                      width="640"
+                      height="360"
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -127,12 +131,18 @@ function Project() {
 
                 <div className="flex gap-4 mt-5">
                   <a
-                    href={project.liveDemo || "#"}
+                    href={project.liveDemo || undefined}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-sm font-semibold text-center"
+                    className={`flex-1 px-4 py-2 rounded-lg text-sm font-semibold text-center ${
+                      project.liveDemo
+                        ? "bg-blue-600 hover:bg-blue-700"
+                        : "bg-white/5 border border-white/10 cursor-not-allowed opacity-60"
+                    }`}
+                    aria-disabled={!project.liveDemo}
+                    tabIndex={project.liveDemo ? undefined : -1}
                   >
-                    Live Demo
+                    {project.liveDemo ? "Live Demo" : "Live Demo (coming soon)"}
                   </a>
 
                   <a
@@ -169,7 +179,8 @@ function Project() {
                 href="https://github.com/omid2007hope"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-white/5 border border-white/10 rounded-full flex justify-center items-center font-bold hover:bg-white/10 transition"
+                className="w-12 h-12 bg-white/5 border border-white/10 rounded-full flex justify-center items-center font-bold hover:bg-white/10 transition"
+                aria-label="GitHub profile"
               >
                 <Github />
               </a>
@@ -178,7 +189,8 @@ function Project() {
                 href="https://www.linkedin.com/in/omid-teimory-48233638b"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-white/5 border border-white/10 rounded-full flex justify-center items-center font-bold hover:bg-white/10 transition"
+                className="w-12 h-12 bg-white/5 border border-white/10 rounded-full flex justify-center items-center font-bold hover:bg-white/10 transition"
+                aria-label="LinkedIn profile"
               >
                 <Linkedin />
               </a>
@@ -187,7 +199,8 @@ function Project() {
                 href="https://x.com/Omid2007hope"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-white/5 border border-white/10 rounded-full flex justify-center items-center font-bold hover:bg-white/10 transition"
+                className="w-12 h-12 bg-white/5 border border-white/10 rounded-full flex justify-center items-center font-bold hover:bg-white/10 transition"
+                aria-label="X profile"
               >
                 <X />
               </a>

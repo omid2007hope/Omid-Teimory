@@ -123,6 +123,11 @@ function ProjectShowcase() {
             <img
               src={project.img}
               alt={`${project.title} cover`}
+              width="1280"
+              height="720"
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
               className="w-full h-full object-cover"
             />
           </div>
@@ -179,13 +184,20 @@ function ProjectShowcase() {
 
               <div className="space-y-4 pt-4">
                 <button
-                  onClick={() => window.open(project.liveDemo, "_blank")}
-                  className="w-full py-3 bg-blue-600 hover:bg-blue-700 rounded-xl font-semibold transition"
+                  type="button"
+                  onClick={() => project.liveDemo && window.open(project.liveDemo, "_blank")}
+                  className={`w-full py-3 rounded-xl font-semibold transition ${
+                    project.liveDemo
+                      ? "bg-blue-600 hover:bg-blue-700"
+                      : "bg-white/5 border border-white/10 cursor-not-allowed opacity-70"
+                  }`}
+                  aria-disabled={!project.liveDemo}
                 >
-                  View Live Site
+                  {project.liveDemo ? "View Live Site" : "Live site coming soon"}
                 </button>
 
                 <button
+                  type="button"
                   onClick={() => window.open(project.src, "_blank")}
                   className="w-full py-3 bg-white/10 hover:bg-white/20 border border-white/10 rounded-xl font-semibold transition"
                 >
@@ -223,6 +235,10 @@ function ProjectShowcase() {
                       key={imgSrc}
                       src={imgSrc}
                       alt={`${project.title} showcase ${index + 1}`}
+                      width="640"
+                      height="360"
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-64 object-cover bg-slate-700 rounded-xl"
                     />
                   ))}

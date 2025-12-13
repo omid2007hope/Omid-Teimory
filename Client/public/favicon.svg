@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Omid Teimory favicon</title>
+  <desc id="desc">Minimal OT monogram on dark background</desc>
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop stop-color="#38bdf8" offset="0"/>
+      <stop stop-color="#6366f1" offset="1"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#0f172a"/>
+  <rect x="6" y="6" width="52" height="52" rx="12" fill="url(#g)" opacity="0.25"/>
+  <path d="M16 20c0-3.3 2.6-6 5.8-6h20.4c3.2 0 5.8 2.7 5.8 6v24c0 3.3-2.6 6-5.8 6H21.8c-3.2 0-5.8-2.7-5.8-6V20z" fill="none" stroke="url(#g)" stroke-width="3" stroke-linecap="round"/>
+  <path d="M20 32h24m-12-14v28" stroke="#e2e8f0" stroke-width="3" stroke-linecap="round"/>
+</svg>

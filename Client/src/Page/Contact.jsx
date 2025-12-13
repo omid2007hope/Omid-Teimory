@@ -79,6 +79,8 @@ function Contact() {
                     value={form.name}
                     onChange={handleChange}
                     placeholder="Enter your name"
+                    autoComplete="name"
+                    required
                     className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl outline-none text-white placeholder-white/50"
                   />
                 </div>
@@ -93,6 +95,8 @@ function Contact() {
                     value={form.email}
                     onChange={handleChange}
                     placeholder="Enter your email address"
+                    autoComplete="email"
+                    required
                     className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl outline-none text-white placeholder-white/50"
                   />
                 </div>
@@ -108,6 +112,8 @@ function Contact() {
                   value={form.subject}
                   onChange={handleChange}
                   placeholder="What is this about?"
+                  autoComplete="off"
+                  required
                   className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl outline-none text-white placeholder-white/50"
                 />
               </div>
@@ -121,6 +127,7 @@ function Contact() {
                   value={form.message}
                   onChange={handleChange}
                   placeholder="Write your message here..."
+                  required
                   className="w-full h-40 px-4 py-3 bg-white/5 border border-white/10 rounded-xl outline-none text-white placeholder-white/50 resize-none"
                 ></textarea>
               </div>
@@ -176,7 +183,8 @@ function Contact() {
                     href="https://github.com/omid2007hope"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition flex items-center justify-center"
+                    className="w-12 h-12 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition flex items-center justify-center"
+                    aria-label="GitHub profile"
                   >
                     <Github />
                   </a>
@@ -185,7 +193,8 @@ function Contact() {
                     href="https://www.linkedin.com/in/omid-teimory-48233638b"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition flex items-center justify-center"
+                    className="w-12 h-12 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition flex items-center justify-center"
+                    aria-label="LinkedIn profile"
                   >
                     <Linkedin />
                   </a>
@@ -194,7 +203,8 @@ function Contact() {
                     href="https://x.com/Omid2007hope"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-10 h-10 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition flex items-center justify-center"
+                    className="w-12 h-12 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition flex items-center justify-center"
+                    aria-label="X profile"
                   >
                     <X />
                   </a>
@@ -224,7 +234,8 @@ function Contact() {
                 href="https://github.com/omid2007hope"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-white/5 border border-white/10 rounded-full flex items-center justify-center hover:bg-white/10 transition"
+                className="w-12 h-12 bg-white/5 border border-white/10 rounded-full flex items-center justify-center hover:bg-white/10 transition"
+                aria-label="GitHub profile"
               >
                 <Github />
               </a>
@@ -233,7 +244,8 @@ function Contact() {
                 href="https://www.linkedin.com/in/omid-teimory-48233638b"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-white/5 border border-white/10 rounded-full flex items-center justify-center hover:bg-white/10 transition"
+                className="w-12 h-12 bg-white/5 border border-white/10 rounded-full flex items-center justify-center hover:bg-white/10 transition"
+                aria-label="LinkedIn profile"
               >
                 <Linkedin />
               </a>
@@ -242,7 +254,8 @@ function Contact() {
                 href="https://x.com/Omid2007hope"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-white/5 border border-white/10 rounded-full flex items-center justify-center hover:bg-white/10 transition"
+                className="w-12 h-12 bg-white/5 border border-white/10 rounded-full flex items-center justify-center hover:bg-white/10 transition"
+                aria-label="X profile"
               >
                 <X />
               </a>

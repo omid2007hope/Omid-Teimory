@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { Suspense, lazy, useState } from "react";
 import { Atom, Github, Linkedin, X } from "lucide-react";
-import ChatBox from "./ChatBox";
 import SEO from "../Component/SEO";
 import Me from "../Assets/Image/Me.jpg";
+
+const ChatBox = lazy(() => import("./ChatBox"));
 
 function Home() {
   const [open, setOpen] = useState(false);
@@ -53,6 +54,11 @@ function Home() {
               <img
                 src={Me}
                 alt="Portrait of Omid Teimory"
+                width="640"
+                height="640"
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
                 className="relative w-full aspect-square object-cover rounded-[28px] border border-white/10 shadow-[0_20px_80px_rgba(0,0,0,0.45)]"
               />
             </div>
@@ -113,6 +119,7 @@ function Home() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-16 h-16 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition flex justify-center items-center font-bold"
+                    aria-label={item.name}
                   >
                     {item.icon}
                   </a>
@@ -124,10 +131,15 @@ function Home() {
           <button
             onClick={() => setOpen(true)}
             className="bg-blue-500 px-5 py-5 flex items-center justify-center rounded-full hover:bg-blue-600 border-2 border-blue-950 fixed right-8 bottom-8"
+            aria-label="Open chat"
+            aria-expanded={open}
+            aria-controls="portfolio-chatbox"
           >
             <Atom size={35} />
           </button>
-          <ChatBox open={open} setOpen={setOpen} />
+          <Suspense fallback={null}>
+            <ChatBox open={open} setOpen={setOpen} />
+          </Suspense>
         </div>
       </div>
     </>

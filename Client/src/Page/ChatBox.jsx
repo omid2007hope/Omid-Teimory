@@ -50,8 +50,41 @@ function ChatBox({ open, setOpen }) {
       { id: thinkingId, text: "Thinking...", from: "bot", time: "now" },
     ]);
 
+    const DEFAULT_CHAT_API = import.meta.env.DEV
+      ? "http://localhost:3001/api/chat"
+      : "/api/chat";
+    const endpoint = (import.meta.env.VITE_CHAT_API || DEFAULT_CHAT_API).trim();
+
+    const markError = (errMsg) => {
+      setMessages((prev) =>
+        prev.map((m) =>
+          m.id === thinkingId
+            ? {
+                ...m,
+                text: errMsg,
+                time: new Date().toLocaleTimeString([], {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                }),
+              }
+            : m
+        )
+      );
+    };
+
+    if (!endpoint) {
+      markError("Chat backend not configured.");
+      return;
+    }
+
+    // Dev fallback: avoid noisy 404s when no local backend exists.
+    const isDefaultEndpoint = endpoint === DEFAULT_CHAT_API;
+    if (import.meta.env.DEV && isDefaultEndpoint && endpoint.includes("localhost")) {
+      markError("Chat is offline in dev. Run `npm start` in /Server or set VITE_CHAT_API.");
+      return;
+    }
+
     try {
-      const endpoint = "/api/chat";
       console.log("Sending request to", endpoint);
 
       const res = await fetch(endpoint, {
@@ -60,26 +93,46 @@ function ChatBox({ open, setOpen }) {
         body: JSON.stringify({ message: userMsg.text }),
       });
 
-      let data;
-      try {
-        data = await res.json();
-      } catch (err) {
-        console.error("Failed to parse JSON from /api/chat", err);
-        throw new Error("Invalid JSON response from server");
+      const contentType = res.headers.get("content-type") || "";
+      const rawText = await res.text();
+      const isJson = contentType.includes("application/json");
+
+      let data = {};
+      if (isJson && rawText.trim().length) {
+        try {
+          data = JSON.parse(rawText);
+        } catch (err) {
+          console.error("Failed to parse JSON from /api/chat", err);
+          throw new Error("Invalid JSON response from server");
+        }
       }
 
       if (!res.ok) {
-        const errMsg = data?.reply || `Request failed with status ${res.status}`;
+        const errMsg =
+          data?.reply ||
+          rawText ||
+          `Request failed with status ${res.status}`;
         console.error("Non-200 response from /api/chat:", res.status, errMsg);
+        if (res.status === 404 && isDefaultEndpoint) {
+          markError("Chat service not running. Start /Server or set VITE_CHAT_API.");
+          return;
+        }
         throw new Error(errMsg);
       }
+
+      const reply =
+        (typeof data?.reply === "string" && data.reply.trim().length
+          ? data.reply
+          : null) ||
+        (rawText?.trim().length ? rawText : null) ||
+        "No reply received.";
 
       setMessages((prev) =>
         prev.map((m) =>
           m.id === thinkingId
             ? {
                 ...m,
-                text: data.reply,
+                text: reply,
                 time: new Date().toLocaleTimeString([], {
                   hour: "2-digit",
                   minute: "2-digit",
@@ -90,20 +143,12 @@ function ChatBox({ open, setOpen }) {
       );
     } catch (err) {
       console.error("Chat request failed", err);
-      setMessages((prev) =>
-        prev.map((m) =>
-          m.id === thinkingId
-            ? {
-                ...m,
-                text: `Error: ${err?.message || "Could not reach server."}`,
-                time: new Date().toLocaleTimeString([], {
-                  hour: "2-digit",
-                  minute: "2-digit",
-                }),
-              }
-            : m
-        )
-      );
+      const msg = err?.message || "Could not reach server.";
+      const hint =
+        msg.includes("404") || msg.includes("Not Found")
+          ? " (deploy /api/chat or set VITE_CHAT_API)"
+          : "";
+      markError(`Error: ${msg}${hint}`);
     }
   };
 
@@ -116,6 +161,7 @@ function ChatBox({ open, setOpen }) {
 
   return (
     <aside
+      id="portfolio-chatbox"
       role="complementary"
       aria-label="Chat"
       className={`fixed right-6 bottom-6 w-80 max-h-[75vh] h-[75vh] rounded-xl z-[150] shadow-2xl overflow-hidden transform transition-all duration-200 ${
@@ -153,6 +199,8 @@ function ChatBox({ open, setOpen }) {
         <div
           ref={listRef}
           className="flex-1 min-h-0 px-3 py-3 overflow-y-auto space-y-3 bg-slate-50"
+          role="log"
+          aria-live="polite"
         >
           {messages.map((m) => (
             <div
@@ -190,6 +238,7 @@ function ChatBox({ open, setOpen }) {
               onChange={(e) => setMessage(e.target.value)}
               onKeyDown={onKeyDown}
               placeholder="Type a message..."
+              aria-label="Message text"
               className="flex-1 resize-none text-black px-3 py-2 min-h-[36px] max-h-28 rounded-lg border border-blue-300 focus:ring-2 focus:ring-blue-400 bg-white text-sm"
             />
 
@@ -197,6 +246,7 @@ function ChatBox({ open, setOpen }) {
               type="submit"
               disabled={!message.trim()}
               className="p-2.5 rounded-lg bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 transition"
+              aria-label="Send message"
             >
               <Forward size={16} />
             </button>
