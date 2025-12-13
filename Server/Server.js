@@ -2,6 +2,7 @@
 import OpenAI from "openai";
 import cors from "cors";
 import dotenv from "dotenv";
+import nodemailer from "nodemailer";
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -20,6 +21,13 @@ if (!OPENAI_API_KEY) {
   process.exit(1);
 }
 
+const SMTP_HOST = process.env.SMTP_HOST;
+const SMTP_PORT = Number(process.env.SMTP_PORT) || 587;
+const SMTP_USER = process.env.SMTP_USER;
+const SMTP_PASS = process.env.SMTP_PASS;
+const CONTACT_TO = process.env.CONTACT_TO || SMTP_USER;
+const canSendMail = SMTP_HOST && SMTP_USER && SMTP_PASS && CONTACT_TO;
+
 // --------- app & client ----------
 const app = express();
 app.use(express.json());
@@ -28,6 +36,17 @@ app.use(cors({
 }));
 
 const client = new OpenAI({ apiKey: OPENAI_API_KEY });
+const mailer = canSendMail
+  ? nodemailer.createTransport({
+      host: SMTP_HOST,
+      port: SMTP_PORT,
+      secure: SMTP_PORT === 465,
+      auth: {
+        user: SMTP_USER,
+        pass: SMTP_PASS,
+      },
+    })
+  : null;
 
 // Put large system prompt in a constant for readability
 const SYSTEM_PROMPT = `You are Omid's AI assistant.
@@ -136,6 +155,46 @@ app.post("/api/chat", async (req, res) => {
   } catch (err) {
     console.error("OpenAI error:", err?.message ?? err);
     return res.status(500).json({ reply: "Server error." });
+  }
+});
+
+app.post("/api/contact", async (req, res) => {
+  const { name, email, subject, message } = req.body || {};
+
+  if (!name || !email || !subject || !message) {
+    return res.status(400).json({ message: "All fields are required." });
+  }
+
+  if (!mailer) {
+    return res.status(500).json({ message: "Contact service not configured on server." });
+  }
+
+  try {
+    await mailer.sendMail({
+      from: `"${name}" <${SMTP_USER}>`,
+      replyTo: email,
+      to: CONTACT_TO,
+      subject: subject.slice(0, 140),
+      text: `
+Name: ${name}
+Email: ${email}
+Subject: ${subject}
+
+${message}
+      `.trim(),
+      html: `
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Subject:</strong> ${subject}</p>
+        <p><strong>Message:</strong></p>
+        <p>${message.replace(/\n/g, "<br>")}</p>
+      `,
+    });
+
+    return res.json({ message: "Message sent successfully." });
+  } catch (err) {
+    console.error("Contact send error:", err?.message || err);
+    return res.status(500).json({ message: "Failed to send message. Please try again later." });
   }
 });
 

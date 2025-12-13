@@ -23,7 +23,7 @@ function App() {
       <main id="main-content" className="pt-20" role="main">
         <Suspense
           fallback={
-            <div className="w-full py-16 text-center text-white">Loading page…</div>
+            <div className="w-full py-16 text-center text-white">Loading page...</div>
           }
         >
           <Routes>

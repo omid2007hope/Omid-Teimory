@@ -1,12 +1,4 @@
-﻿import {
-  Book,
-  Globe,
-  Mail,
-  Phone,
-  MapPin,
-  Award,
-  Link as LinkIcon,
-} from "lucide-react";
+import { Book, Mail, Phone, MapPin, Award, Link as LinkIcon } from "lucide-react";
 import SEO from "../Component/SEO";
 import Me from "../Assets/Image/Me.jpg";
 
@@ -145,7 +137,7 @@ function Resume() {
                 <div className="flex items-start gap-2">
                   <Award size={16} className="mt-1" />
                   <div>
-                    <p className="font-semibold">Ã–SD Zertifikat A1 â€“ German</p>
+                    <p className="font-semibold">OSD Zertifikat A1 - German</p>
                     <p className="text-xs opacity-70">Score: 94/100</p>
                   </div>
                 </div>
@@ -198,7 +190,7 @@ function Resume() {
                     Frontend Developer - Freelancer
                   </h3>
                   <p className="text-white/60 text-sm">
-                    2024 - Present — Vienna, Austria
+                    2024 - Present - Vienna, Austria
                   </p>
 
                   <ul className="list-disc ml-6 mt-3 space-y-1 text-white/80">
@@ -278,7 +270,7 @@ function Resume() {
                     Full-Stack Web Development
                   </h3>
                   <p className="text-white/60 text-sm">
-                    2023 - Present — Self-Taught
+                    2023 - Present - Self-Taught
                   </p>
 
                   <p className="text-white/80 mt-2 max-w-2xl">
@@ -409,8 +401,6 @@ function SkillGroup({ title, items }) {
 }
 
 export default Resume;
-
-
 
 
 

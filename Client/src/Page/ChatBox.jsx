@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Forward, X } from "lucide-react";
 
 function ChatBox({ open, setOpen }) {
@@ -27,7 +27,6 @@ function ChatBox({ open, setOpen }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("SUBMIT FIRED", message);
     if (!message.trim()) return;
 
     const userMsg = {
@@ -85,8 +84,6 @@ function ChatBox({ open, setOpen }) {
     }
 
     try {
-      console.log("Sending request to", endpoint);
-
       const res = await fetch(endpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },

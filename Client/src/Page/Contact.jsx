@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Github, Linkedin, X, Mail, MapPin } from "lucide-react";
-import emailjs from "@emailjs/browser";
 import SEO from "../Component/SEO";
 
 function Contact() {
@@ -10,40 +9,46 @@ function Contact() {
     subject: "",
     message: "",
   });
+  const [status, setStatus] = useState(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!form.name || !form.email || !form.subject || !form.message) {
-      alert("Please fill in all fields.");
+      setStatus({ type: "error", message: "Please fill in all fields." });
       return;
     }
 
-    emailjs
-      .send(
-        "service_omid",
-        "template_omid",
-        {
-          user_name: form.name,
-          user_email: form.email,
-          user_subject: form.subject,
-          user_message: form.message,
-        },
-        "jM0uvw5dlLea-N5IA"
-      )
-      .then(
-        () => {
-          alert("Message sent successfully.");
-          setForm({ name: "", email: "", subject: "", message: "" });
-        },
-        () => {
-          alert("Failed to send message.");
-        }
-      );
+    setStatus(null);
+    setIsSubmitting(true);
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        throw new Error(data?.message || "Failed to send message.");
+      }
+
+      setStatus({ type: "success", message: data?.message || "Message sent successfully." });
+      setForm({ name: "", email: "", subject: "", message: "" });
+    } catch (err) {
+      setStatus({
+        type: "error",
+        message: err?.message || "Failed to send message. Please try again.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -134,10 +139,21 @@ function Contact() {
 
               <button
                 type="submit"
-                className="w-full py-4 bg-blue-600 hover:bg-blue-700 rounded-xl font-semibold transition text-lg"
+                disabled={isSubmitting}
+                className="w-full py-4 bg-blue-600 hover:bg-blue-700 rounded-xl font-semibold transition text-lg disabled:opacity-60"
               >
-                Send Message
+                {isSubmitting ? "Sending..." : "Send Message"}
               </button>
+
+              {status && (
+                <p
+                  className={`text-sm font-semibold ${
+                    status.type === "success" ? "text-green-400" : "text-red-400"
+                  }`}
+                >
+                  {status.message}
+                </p>
+              )}
             </form>
 
             <div className="w-full bg-white/5 border border-white/10 rounded-2xl p-6 h-fit space-y-6">
