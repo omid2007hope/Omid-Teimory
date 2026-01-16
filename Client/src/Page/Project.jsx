@@ -43,9 +43,9 @@ function Project() {
     },
     {
       id: 2,
-      title: "VCCE",
-      desc: "Virtual Cloud Coding Environment (VCCE) is a web-based IDE that allows users to code in the cloud",
-      img: VCCE,
+      title: "Spectre",
+      desc: "Project Spectre",
+      // img: VCCE,
       tech: [
         "HTML",
         "Tailwind CSS",
@@ -54,8 +54,10 @@ function Project() {
         "Redux",
         "React Suite",
         "GitHub",
+        "node.js",
+        "express.js",
       ],
-      src: "https://github.com/omid2007hope/Real-VCCE-Version-1",
+      src: "https://github.com/omid2007hope/Data-Science-Project",
       liveDemo: "",
     },
   ];

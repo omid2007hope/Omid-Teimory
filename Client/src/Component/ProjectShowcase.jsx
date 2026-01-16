@@ -54,9 +54,9 @@ function ProjectShowcase() {
     },
     {
       id: 2,
-      title: "VCCE",
-      desc: "Virtual Cloud Coding Environment",
-      img: VCCE,
+      title: "Spectre",
+      desc: "Project Spectre",
+      // img: VCCE,
       showCase: [],
       tech: [
         "HTML",
@@ -66,8 +66,10 @@ function ProjectShowcase() {
         "Redux",
         "React Suite",
         "GitHub",
+        "node.js",
+        "express.js",
       ],
-      src: "https://github.com/omid2007hope/Real-VCCE-Version-1",
+      src: "https://github.com/omid2007hope/Data-Science-Project",
       liveDemo: "",
       duration: "In Progress",
     },
@@ -185,7 +187,9 @@ function ProjectShowcase() {
               <div className="space-y-4 pt-4">
                 <button
                   type="button"
-                  onClick={() => project.liveDemo && window.open(project.liveDemo, "_blank")}
+                  onClick={() =>
+                    project.liveDemo && window.open(project.liveDemo, "_blank")
+                  }
                   className={`w-full py-3 rounded-xl font-semibold transition ${
                     project.liveDemo
                       ? "bg-blue-600 hover:bg-blue-700"
@@ -193,7 +197,9 @@ function ProjectShowcase() {
                   }`}
                   aria-disabled={!project.liveDemo}
                 >
-                  {project.liveDemo ? "View Live Site" : "Live site coming soon"}
+                  {project.liveDemo
+                    ? "View Live Site"
+                    : "Live site coming soon"}
                 </button>
 
                 <button
