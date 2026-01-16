@@ -166,7 +166,7 @@ function ProjectShowcase() {
                       <p className="text-white/60 text-xs uppercase font-medium">
                         Role
                       </p>
-                      <p className="font-semibold">Lead Frontend Developer</p>
+                      <p className="font-semibold">Developer</p>
                     </div>
                   </div>
 
